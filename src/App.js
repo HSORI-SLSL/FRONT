@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
 
       
       
- <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style={ { width : '250px' } }>
+ <div class="d-flex flex-column align-items-stretch flex-shrink-0" style={ { width : '250px', backgroundImage : "url(/hi.png"} }>
  
  
  <div>
@@ -28,14 +28,15 @@ function App() {
 </div>
 
 
-      <span class="fs-5 fw-semibold" style={ { marginTop : '60px' } }>채팅 목록</span>
+      <span class="fs-5 fw-semibold" style={ { marginTop : '90px' } }>채팅 목록</span>
     
    
 
     <div class="list-group list-group-flush border-bottom scrollarea">
       <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
         <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">세종대왕</strong>
+        <strong class="mb-1">
+          세종대왕</strong>
           <small>Wed</small>
         </div>
         <div class="col-10 mb-1 small">안녕하세요.</div>
