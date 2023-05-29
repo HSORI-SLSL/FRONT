@@ -1,0 +1,10 @@
+.chat-header-card {
+  background-color: #442F11;
+  color: white;
+  border-radius: 5px ;
+  height: 40px;
+}
+
+.btn.btn-chat {
+  background-color: #EBE8DC;
+}

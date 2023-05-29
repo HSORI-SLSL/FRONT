@@ -4,7 +4,7 @@ import './sidebars.css';
 function Sidebar () {
   return (
     <div className="App">
-      <div class="d-flex flex-column align-items-stretch flex-shrink-0" style={ { width : '250px', backgroundImage : "url(/hi.png"} }>
+      <div class="d-flex flex-column align-items-stretch flex-shrink-0" style={ { width : '250px', backgroundImage : "url(/hi.png"}}>
         {/* 홈 */}
         <div> 
           <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
@@ -20,7 +20,7 @@ function Sidebar () {
         </svg>
         <div> 사용자 </div>
         
-        {/* 채팅 목록 시작 */}
+        {/* 채팅 목록 부분 */}
         <span class="fs-5 fw-semibold" style={ { marginTop : '90px' } }>
         채팅 목록
         </span>
@@ -50,7 +50,9 @@ function Sidebar () {
         </div>
   
         {/* 로그아웃 버튼 */}
-        <button type="button" class="btn btn-light" style={ { marginTop : '160px' } }>
+        <button type="button" class="btn btn-light" style={ { marginTop : '200px' } }>
+          {/* 맥북 = 200 
+          윈도우 = 160 */}
           로그아웃
         </button>
       </div>
