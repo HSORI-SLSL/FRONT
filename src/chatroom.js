@@ -12,13 +12,16 @@ function Chatroom() {
   };
 
   const handleMessageSubmit = () => {
-    // 서버에 메시지 전송 로직 추가
-    console.log('메시지 전송:', message);
+    if (message.trim() !== ''){
+      // 서버에 메시지 전송 로직 추가
+      console.log('메시지 전송:', message);
 
-    setMessages([...messages, message]);
+      setMessages([...messages, message]);
 
-    // 메시지 입력 필드 초기화
-    setMessage('');
+      // 메시지 입력 필드 초기화
+      setMessage('');
+    }
+    
   };
 
   const enterKeyEventHandler = (e) => {
@@ -30,17 +33,17 @@ function Chatroom() {
   return (
     <div className="chat-room">
       {/* 대화 상대 */}
-      <div className="chat-header-card" style={{ position: 'fixed', top: '20px', left: 270, width: 'calc(96% - 250px)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div className="chat-header-card">
         <div class="card-body d-flex justify-content-center align-items-center">
           세종대왕
         </div>
       </div>
 
       {/* 주고받는 메시지 */}
-      <div className="chat-messages" style={{marginTop:200, textAlign:'right'}}>
+      <div className="chat-messages">
         {messages.map((msg, index) => (
           <div className="message" key={index}>
-            <span className="sender">User:</span>
+            {/* <span className="sender">User:</span> */}
             <span className="text">{msg}</span>
           </div>
         ))}
@@ -48,7 +51,7 @@ function Chatroom() {
 
 
       {/* 메시지 입력 */}
-      <div className="chat-input" style={{ position: 'fixed', bottom: 0, left: 270, marginBottom:10, width: 'calc(96% - 250px)'}}>
+      <div className="chat-input">
         <div class="input-group input-group-lg">
           {/* 퀴즈 버튼 */}
           <button type="button" class="btn btn-chat">  Q </button>
