@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Sidebar from './layout/sidebar';
-import ChatRoom from './Chatroom';
+import ChatRoom from './chatroom';
 
 function App() {
   return (

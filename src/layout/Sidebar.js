@@ -50,7 +50,7 @@ function Sidebar () {
         </div>
   
         {/* 로그아웃 버튼 */}
-        <button type="button" class="btn btn-light" style={ { marginTop : '200px' } }>
+        <button type="button" class="btn btn-light" style={ { marginTop : '160px' } }>
           {/* 맥북 = 200 
           윈도우 = 160 */}
           로그아웃

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './Chatroom.css';
+import './chatroom.css';
 
 
 function Chatroom() {
@@ -12,16 +12,13 @@ function Chatroom() {
   };
 
   const handleMessageSubmit = () => {
-    if (message.trim() !== ''){
-      // 서버에 메시지 전송 로직 추가
-      console.log('메시지 전송:', message);
+    // 서버에 메시지 전송 로직 추가
+    console.log('메시지 전송:', message);
 
-      setMessages([...messages, message]);
+    setMessages([...messages, message]);
 
-      // 메시지 입력 필드 초기화
-      setMessage('');
-    }
-    
+    // 메시지 입력 필드 초기화
+    setMessage('');
   };
 
   const enterKeyEventHandler = (e) => {
@@ -31,27 +28,35 @@ function Chatroom() {
   }
 
   return (
-    <div className="chat-room">
+
+    <div className="chat-room" class="container">
+
+
+     
       {/* 대화 상대 */}
-      <div className="chat-header-card">
+      <div class="chatheader" className="chat-header-card" style={{ position: 'fixed', top: '20px', left: 270, width: 'calc(96% - 250px)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <div class="card-body d-flex justify-content-center align-items-center">
           세종대왕
         </div>
       </div>
 
+
+
       {/* 주고받는 메시지 */}
-      <div className="chat-messages">
+      <div id='chatbox' className="chat-messages" style={{ height: '500px', marginTop: '80px', padding: '10px', overflowY: 'scroll', overflowX : 'hidden', maxHeight: '100vh'}}>
         {messages.map((msg, index) => (
-          <div className="message" key={index}>
-            {/* <span className="sender">User:</span> */}
-            <span className="text">{msg}</span>
+          <div className="message" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}} key={index}>
+            <div className="text"  style={{ wordWrap: 'break-word', maxWidth: '50%', padding: '10px', borderRadius: '5px', backgroundColor: '#f2f2f2', display: 'inline-block', whiteSpace: 'pre-wrap', overflowWrap: 'break-word', wordWrap: 'break-word'}}>{msg}</div>
           </div>
         ))}
       </div>
 
+   
+
+    
 
       {/* 메시지 입력 */}
-      <div className="chat-input">
+      <div class="chatfooter" className="chat-input" style={{ position: 'fixed', bottom: 0, left: 270, marginBottom:10, width: 'calc(96% - 250px)'}}>
         <div class="input-group input-group-lg">
           {/* 퀴즈 버튼 */}
           <button type="button" class="btn btn-chat">  Q </button>
@@ -75,7 +80,9 @@ function Chatroom() {
           </button>
         </div>
       </div>
-    </div>
+
+      </div>
+
   );
 }
 
