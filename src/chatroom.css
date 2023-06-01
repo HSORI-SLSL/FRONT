@@ -20,12 +20,48 @@
   align-items: center;
 }
 
-/* 메시지 주고받는 부분  */
-.chat-messages {
-  /* margin-top: 200px; */
+/* 메시지 주고받는 부분 */
+.chat-messages{
+  height: 550px;
+  margin-top: 70px;
+  padding: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 100vh;
+}
 
-  text-align: right;
-  margin: 15px;
+/* 메시지 말풍선 */
+.message
+{
+position: relative;
+height: 50px;
+padding: 10px;
+margin-left:100px;
+margin-top:10px;
+background: #DEDCDA;
+border-radius: 10px;
+max-width: 100%;
+
+display:flex;
+flex-direction: column;
+align-items: flex-end;
+
+/* display:inline-block; 나란히 배치 
+flex-direction: column;
+white-space: nowrap; 
+ */
+}
+
+.message .text {
+  word-wrap: break-word;
+  max-width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+
+  display: inline-block;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 /* 메시지 입력 부분  */
@@ -42,43 +78,3 @@
   background-color: #EBE8DC;
 }
 
-/* 메시지 말풍선 */
-.message
-{
-position: relative;
-height: 50px;
-padding: 0px;
-margin-left:100px;
-margin-top:10px;
-background: #DEDCDA;
-display:inline-block; /* 나란히 배치  */
-flex-direction: column;
-white-space: nowrap; /* 텍스트 길이에 따라 조절 */
-max-width:100%;
-border-radius: 10px;
-
-}
-
-.message .text {
-  display: inline-block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  
-}
-
-
-/* 
-말풍선 꼬리
-.message:after
-{
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 20px 0 20px 35px;
-border-color: transparent #DEDCDA;
-display: block;
-width: 0;
-z-index: 1;
-right: -35px;
-top: 67px;
-} */
