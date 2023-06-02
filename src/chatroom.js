@@ -10,6 +10,7 @@ function Chatroom() {
     setMessage(event.target.value);
   };
 
+  // 메시지 보내기
   const handleMessageSubmit = () => {
     if (message.trim() !== '') {
       // 서버에 메시지 전송 로직 추가
@@ -22,12 +23,14 @@ function Chatroom() {
     }
   };
 
+  // 엔터 눌렀을 때 전송 되는 것
   const enterKeyEventHandler = (e) => {
     if(e.key === 'Enter'){
       handleMessageSubmit();
     }
   }
 
+  // 스크롤바 자동으로 내리기
   const chatRef = useRef(null);
 
   useEffect(() => {
@@ -37,8 +40,6 @@ function Chatroom() {
   const scrollToBottom = () => {
     chatRef.current.scrollTop = chatRef.current.scrollHeight;
   };
-
-
 
 
   return (
@@ -54,11 +55,10 @@ function Chatroom() {
       <div className="chat-messages" ref={chatRef}>
       {messages.map((msg, index) => (
         <div className="message" key={index}>
-          <div className="text" style={{ padding: '10px' }}>{msg}</div>
+          <div className="text">{msg}</div>
         </div>
       ))}
     </div>
-
 
 
       {/* 메시지 입력 부분*/}
