@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useRef, useEffect } from 'react';
 import './chatroom.css';
 
 function Chatroom() {
@@ -27,6 +28,19 @@ function Chatroom() {
     }
   }
 
+  const chatRef = useRef(null);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const scrollToBottom = () => {
+    chatRef.current.scrollTop = chatRef.current.scrollHeight;
+  };
+
+
+
+
   return (
     <div className="chat-room" class="container">
       {/* 대화 상대 나타내는 부분*/}
@@ -37,13 +51,15 @@ function Chatroom() {
       </div>
 
       {/* 메시지 주고받는 부분*/}
-      <div className="chat-messages">
-        {messages.map((msg, index) => (
-          <div className="message" key={index}>
-            <div className="text" >{msg}</div>
-          </div>
-        ))}
-      </div>
+      <div className="chat-messages" ref={chatRef}>
+      {messages.map((msg, index) => (
+        <div className="message" key={index}>
+          <div className="text" style={{ padding: '10px' }}>{msg}</div>
+        </div>
+      ))}
+    </div>
+
+
 
       {/* 메시지 입력 부분*/}
       <div class="chatfooter" className="chat-input">
