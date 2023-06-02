@@ -3,8 +3,6 @@
   grid-template-rows: 1fr auto 1fr;
   grid-template-columns: 1fr;
   height: 100vh;
-  background-image: url(/public/hi.png);
-  background-size: cover;
 }
 
 /* 대화 상대 */
@@ -58,13 +56,6 @@ white-space: nowrap;
  */
 }
 
-@font-face {
-  font-family: 'ChosunGs';
-  src: url('/public//ChosunGs.TTF') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .message .text {
   word-wrap: break-word;
   max-width: 100%;
@@ -76,8 +67,6 @@ white-space: nowrap;
   white-space: pre-wrap;
   overflow-wrap: break-word;
   word-wrap: break-word;
-
-  font-family: 'ChosunGs';
 
 }
 
@@ -96,5 +85,5 @@ white-space: nowrap;
 }
 
 .form-control::placeholder{
-  font-size: 15px; /* 원하는 글자 크기로 수정하세요 */
+  font-size: 18px; /* 원하는 글자 크기로 수정하세요 */
 }

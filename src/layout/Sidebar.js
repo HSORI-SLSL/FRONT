@@ -5,6 +5,8 @@ function Sidebar () {
   return (
     <div className="App">
       <div class="d-flex flex-column align-items-stretch flex-shrink-0" style={ { width : '250px', backgroundColor:'#F3F2EB' ,position:'fixed'}}>
+      {/* backgroundColor:'#F3F2EB' 
+          backgroundImage : "url(/hi.png"*/}
         {/* 홈 */}
         <div> 
           <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none">
@@ -21,31 +23,31 @@ function Sidebar () {
         <div className='user'> 사용자 </div>
         
         {/* 채팅 목록 부분 */}
-        <span class="fs-5 fw-semibold" className="list" style={ { marginTop : '90px' } }>
+        <span class="fs-5 fw-semibold" style={ { marginTop : '90px' } }>
         채팅 목록
         </span>
         {/* 채팅 list group */}
         <div class="list-group list-group-flush border-bottom scrollarea">
           <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1" className='name1'> 세종대왕 </strong>
+              <strong class="mb-1"> 세종대왕 </strong>
               <small>Wed</small>
               </div>
-              <div class="col-10 mb-1 small" className='text1'>안녕하세요.</div>
+              <div class="col-10 mb-1 small">안녕하세요.</div>
           </a>
           <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1" className='name2'>태종</strong>
+              <strong class="mb-1">태종</strong>
               <small class="text-muted">Tues</small>
             </div>
-            <div class="col-10 mb-1 small" className='text2'>안녕하세요</div>
+            <div class="col-10 mb-1 small">안녕하세요</div>
           </a>
           <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1" className='name3'>세종대왕</strong>
+              <strong class="mb-1">세종대왕</strong>
               <small class="text-muted">Mon</small>
             </div>
-            <div class="col-10 mb-1 small" className='text3'>안녕하세요</div>
+            <div class="col-10 mb-1 small">안녕하세요</div>
           </a>
         </div>
   

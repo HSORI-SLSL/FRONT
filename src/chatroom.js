@@ -69,14 +69,13 @@ function Chatroom() {
           {/* 메시지 입력 */}
           <input 
           type="text" 
-          class="form-control input-placeholder" 
+          class="form-control" 
           aria-label="Sizing example input" 
           aria-describedby="inputGroup-sizing-lg"
           placeholder="메시지를 입력하세요" 
           value={message}
           onChange={handleMessageChange}
           onKeyPress={enterKeyEventHandler}>
-         
           </input>
           {/* 전송 버튼 */}
           <button 
