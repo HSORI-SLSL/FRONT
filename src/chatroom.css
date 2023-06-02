@@ -94,3 +94,7 @@ white-space: nowrap;
 .btn.btn-chat {
   background-color: #EBE8DC;
 }
+
+.form-control::placeholder{
+  font-size: 15px; /* 원하는 글자 크기로 수정하세요 */
+}
