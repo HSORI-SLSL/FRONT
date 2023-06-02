@@ -18,34 +18,34 @@ function Sidebar () {
           <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
         </svg>
-        <div> 사용자 </div>
+        <div className='user'> 사용자 </div>
         
         {/* 채팅 목록 부분 */}
-        <span class="fs-5 fw-semibold" style={ { marginTop : '90px' } }>
+        <span class="fs-5 fw-semibold" className="list" style={ { marginTop : '90px' } }>
         채팅 목록
         </span>
         {/* 채팅 list group */}
         <div class="list-group list-group-flush border-bottom scrollarea">
           <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1"> 세종대왕 </strong>
+              <strong class="mb-1" className='name1'> 세종대왕 </strong>
               <small>Wed</small>
               </div>
-              <div class="col-10 mb-1 small">안녕하세요.</div>
+              <div class="col-10 mb-1 small" className='text1'>안녕하세요.</div>
           </a>
           <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1">태종</strong>
+              <strong class="mb-1" className='name2'>태종</strong>
               <small class="text-muted">Tues</small>
             </div>
-            <div class="col-10 mb-1 small">안녕하세요</div>
+            <div class="col-10 mb-1 small" className='text2'>안녕하세요</div>
           </a>
           <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1">세종대왕</strong>
+              <strong class="mb-1" className='name3'>세종대왕</strong>
               <small class="text-muted">Mon</small>
             </div>
-            <div class="col-10 mb-1 small">안녕하세요</div>
+            <div class="col-10 mb-1 small" className='text3'>안녕하세요</div>
           </a>
         </div>
   

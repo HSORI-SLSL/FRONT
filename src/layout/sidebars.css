@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'ChosunGs';
+  src: url('/public//ChosunGs.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
@@ -15,6 +23,7 @@ main {
   max-height: 100vh;
   overflow-x: auto;
   overflow-y: hidden;
+  
 }
 
 .b-example-divider {
@@ -87,3 +96,33 @@ main {
 
 .fw-semibold { font-weight: 600; }
 .lh-tight { line-height: 1.25; }
+
+
+.user{
+  font-family: 'ChosunGs';
+}
+
+.list{
+  
+  font-family: 'ChosunGs';
+}
+
+.name1{
+  font-family: 'ChosunGs';
+}
+.name2{
+  font-family: 'ChosunGs';
+}
+.name3{
+  font-family: 'ChosunGs';
+}
+
+.text1{
+  font-family: 'ChosunGs';
+}
+.text2{
+  font-family: 'ChosunGs';
+}
+.text3{
+  font-family: 'ChosunGs';
+}

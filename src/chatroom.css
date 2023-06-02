@@ -58,6 +58,13 @@ white-space: nowrap;
  */
 }
 
+@font-face {
+  font-family: 'ChosunGs';
+  src: url('/public//ChosunGs.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .message .text {
   word-wrap: break-word;
   max-width: 100%;
@@ -69,6 +76,9 @@ white-space: nowrap;
   white-space: pre-wrap;
   overflow-wrap: break-word;
   word-wrap: break-word;
+
+  font-family: 'ChosunGs';
+
 }
 
 /* 메시지 입력 부분  */
@@ -84,4 +94,3 @@ white-space: nowrap;
 .btn.btn-chat {
   background-color: #EBE8DC;
 }
-
