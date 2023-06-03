@@ -4,9 +4,10 @@ import './sidebars.css';
 function Sidebar () {
   return (
     <div className="App">
-      <div class="d-flex flex-column align-items-stretch flex-shrink-0" style={ { width : '250px', backgroundColor:'#F3F2EB' ,position:'fixed'}}>
+      <div class="d-flex flex-column align-items-stretch flex-shrink-0" style={ { width : '250px', backgroundColor:'#F3F2EB'}}>
       {/* backgroundColor:'#F3F2EB' 
-          backgroundImage : "url(/hi.png"*/}
+          backgroundImage : "url(/hi.png"
+          position:'fixed'*/}
         {/* 홈 */}
         <div> 
           <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none">
