@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import './chatroom.css';
 import axios from 'axios'
 
+import botAvatar from './bot-avatar.png';
+
 function Chatroom() {
   const [query, setQuery] = useState('');
   const [messages, setMessages] = useState([]);
@@ -91,13 +93,17 @@ function Chatroom() {
         </div>
       </div>
 
+    
       <div className="chat-messages" ref={chatRef}>
         {messages.map((msg, index) => (
           <div className="message" key={index}>
             {msg.sender === 'user' ? (
               <div className="text user">{msg.content}</div>
             ) : (
-              <div className="text bot">{msg.content}</div>
+              <div className="text bot">
+                {/* <img src={botAvatar} alt="Bot Avatar" className="avatar" /> */}
+                {msg.content}
+                </div>
             )}
           </div>
         ))}

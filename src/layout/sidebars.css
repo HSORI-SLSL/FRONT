@@ -1,3 +1,6 @@
+.Sidebar{
+  text-align: center;
+}
 
 body {
   min-height: 100vh;
@@ -83,8 +86,7 @@ main {
   background-color: #d2f4ea;
 }
 
-.scrollarea {
+
+/* .scrollarea {
   overflow-y: auto;
-}
-
-
+} */

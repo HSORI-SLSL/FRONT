@@ -3,7 +3,7 @@ import './sidebars.css';
 
 function Sidebar () {
   return (
-    <div className="App">
+    <div className="Sidebar">
       <div class="d-flex flex-column align-items-stretch flex-shrink-0" style={ { width : '250px', backgroundColor:'#F3F2EB'}}>
       {/* backgroundColor:'#F3F2EB' 
           backgroundImage : "url(/hi.png"
@@ -28,7 +28,7 @@ function Sidebar () {
         채팅 목록
         </span>
         {/* 채팅 list group */}
-        <div class="list-group list-group-flush border-bottom scrollarea">
+        <div class="list-group list-group-flush border-bottom ">
           <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
               <strong class="mb-1"> 세종대왕 </strong>

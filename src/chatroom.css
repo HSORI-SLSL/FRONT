@@ -32,13 +32,12 @@
 }
 
 /* 메시지 말풍선 */
-.message
+.message  
 {
   display:flex;
   flex-direction: column;
   align-items: flex-end;
   padding: 10px;
-  
   
 /* position: relative;
 height: 50px;
@@ -54,6 +53,15 @@ width:fit-content; */
 flex-direction: column;
 white-space: nowrap; 
  */
+}
+
+.text.bot {
+  align-self: flex-start;
+  background-color: #f0f0f0;
+}
+
+.text.user{
+  align-self: flex-end;
 }
 
 .message .text {
