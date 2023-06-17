@@ -23,10 +23,17 @@ function Chatroom() {
       });
       const data = response.data;
       const answer = data.Answer;
+
+      // 답변받으면 ...말풍선 사라지게 하기
+      setMessages((prevMessages) => [
+        ...prevMessages.slice(0, -1), // Remove the waiting message bubble
+        { content: answer, sender: 'bot' },
+      ]);
+
       return answer;
     } catch (error) {
       console.error(error);
-      return 'Error: Failed to receive response.';
+      return '오류';
     }
   };
   
@@ -38,15 +45,16 @@ function Chatroom() {
         ...prevMessages,
         { content: userMessage, sender: 'user' },
       ]);
-  
+
+      setQuery('');
+
       const botResponse = await sendMessage(userMessage);
   
       setMessages((prevMessages) => [
-        ...prevMessages,
+        ...prevMessages.slice(0, -1),
         { content: botResponse, sender: 'bot' },
       ]);
-  
-      setQuery('');
+
     }
   };
   
@@ -91,13 +99,17 @@ function Chatroom() {
         </div>
       </div>
 
+    
       <div className="chat-messages" ref={chatRef}>
         {messages.map((msg, index) => (
           <div className="message" key={index}>
             {msg.sender === 'user' ? (
               <div className="text user">{msg.content}</div>
             ) : (
-              <div className="text bot">{msg.content}</div>
+              <div className="text bot">
+                {/* <img src={botAvatar} alt="Bot Avatar" className="avatar" /> */}
+                {msg.content}
+                </div>
             )}
           </div>
         ))}

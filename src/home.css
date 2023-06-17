@@ -1,0 +1,59 @@
+/* 인물정보 */
+.person-info {
+  background-color: #f0f0f0;
+  justify-content: center; /* 가운데 정렬 */
+  align-items: center; /* 가운데 정렬 */
+  width:1100px;
+  height:200px;
+  padding: 20px;
+  margin-top:20px;
+  margin-bottom: 20px;
+  margin-left:50px;
+}
+
+.home-container {
+  display: flex;
+  justify-content: center; /* 가운데 정렬 */
+  align-items: center; /* 가운데 정렬 */
+  flex-wrap: wrap;
+}
+
+/* 공부방 */
+.study-room {
+  background-color: #f0f0f0;
+  padding: 20px;
+  width: 400px;
+  height: 430px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.sejong-room {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.taejo-room {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.yeongjo-room {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* 추천콘텐츠 */
+.recommended-content {
+  background-color: #f0f0f0;
+  width: 400px;
+  height: 430px;
+  padding: 20px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  display: inline-block;
+}

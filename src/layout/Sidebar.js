@@ -1,6 +1,7 @@
 import React from 'react';
 import './sidebars.css';
 
+
 function Sidebar () {
   return (
     <div className="Sidebar">
@@ -28,8 +29,9 @@ function Sidebar () {
         채팅 목록
         </span>
         {/* 채팅 list group */}
+        {/* 세종대왕 채팅 목록  */}
         <div class="list-group list-group-flush border-bottom ">
-          <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+          <a href="http://localhost:3000/chatroom" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
               <strong class="mb-1"> 세종대왕 </strong>
               <small>Wed</small>
