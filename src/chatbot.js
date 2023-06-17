@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import './chatroom.css';
 import axios from 'axios'
 
-import botAvatar from './bot-avatar.png';
-
 function Chatroom() {
   const [query, setQuery] = useState('');
   const [messages, setMessages] = useState([]);
@@ -25,10 +23,17 @@ function Chatroom() {
       });
       const data = response.data;
       const answer = data.Answer;
+
+      // 답변받으면 ...말풍선 사라지게 하기
+      setMessages((prevMessages) => [
+        ...prevMessages.slice(0, -1), // Remove the waiting message bubble
+        { content: answer, sender: 'bot' },
+      ]);
+
       return answer;
     } catch (error) {
       console.error(error);
-      return 'Error: Failed to receive response.';
+      return '오류';
     }
   };
   
@@ -40,15 +45,16 @@ function Chatroom() {
         ...prevMessages,
         { content: userMessage, sender: 'user' },
       ]);
-  
+
+      setQuery('');
+
       const botResponse = await sendMessage(userMessage);
   
       setMessages((prevMessages) => [
-        ...prevMessages,
+        ...prevMessages.slice(0, -1),
         { content: botResponse, sender: 'bot' },
       ]);
-  
-      setQuery('');
+
     }
   };
   

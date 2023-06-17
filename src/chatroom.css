@@ -64,7 +64,21 @@ white-space: nowrap;
   align-self: flex-end;
 }
 
-.message .text {
+.message .text.bot{
+  word-wrap: break-word;
+  max-width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background: #F3F2EB;
+
+  display: inline-block;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+}
+
+.message .text.user{
   word-wrap: break-word;
   max-width: 100%;
   padding: 10px;

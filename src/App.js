@@ -9,7 +9,7 @@ function App() {
   return (
     <div style={{ display: 'flex' }}>
       <Sidebar/>
-      <ChatRoom/>
+      <Chatbot/>
     </div>
   );
 }
