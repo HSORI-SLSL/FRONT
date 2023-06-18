@@ -91,9 +91,11 @@ function Chatroom() {
     chatRef.current.scrollTop = chatRef.current.scrollHeight;
   };
 
+
   return (
     <div className="chat-room container">
       <div className="chatheader chat-header-card">
+        {/* 각 왕의 이름 */}
         <div className="card-body d-flex justify-content-center align-items-center">
           세종대왕
         </div>
@@ -107,8 +109,14 @@ function Chatroom() {
               <div className="text user">{msg.content}</div>
             ) : (
               <div className="text bot">
-                {/* <img src={botAvatar} alt="Bot Avatar" className="avatar" /> */}
+                {/* 왕 프로필 */}
+                <div className="avatar-container">
+                  <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" />
+                </div>  
+                {/* 왕 말풍선 */}
+                <div className="text bot2">
                 {msg.content}
+                </div>
                 </div>
             )}
           </div>

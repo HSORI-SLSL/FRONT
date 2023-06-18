@@ -34,23 +34,25 @@ function Sidebar () {
           <a href="http://localhost:3000/chatroom" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
               <strong class="mb-1" margin="30px"> 
-              <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px"/>
+              <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px"  style={{marginRight:'10px'}}/>
               세종대왕 
               </strong>
               <small>Wed</small>
               </div>
               <div class="col-10 mb-1 small">안녕하세요</div>
           </a>
-          <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+          <a href="http://localhost:3000/chatroom" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1"><img src="/img/taejong.png" alt="Bot Avatar" className="avatar" width="40px"/>태종</strong>
+              <strong class="mb-1"><img src="/img/taejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{marginRight:'10px'}}/>
+              태종</strong>
               <small class="text-muted">Tues</small>
             </div>
             <div class="col-10 mb-1 small">안녕하세요</div>
           </a>
-          <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+          <a href="http://localhost:3000/chatroom" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1"><img src="/img/yeongjo.png" alt="Bot Avatar" className="avatar" width="40px"/>영조</strong>
+              <strong class="mb-1"><img src="/img/yeongjo.png" alt="Bot Avatar" className="avatar" width="40px" style={{marginRight:'10px'}}/>
+              영조</strong>
               <small class="text-muted">Mon</small>
             </div>
             <div class="col-10 mb-1 small">안녕하세요</div>
@@ -58,7 +60,7 @@ function Sidebar () {
         </div>
   
         {/* 로그아웃 버튼 */}
-        <button type="button" class="btn btn-light" style={ { marginTop : '160px' } }>
+        <button type="button" class="btn btn-light" style={ { marginTop : '130px' } }>
           {/* 맥북 = 200 
           윈도우 = 160 */}
           로그아웃

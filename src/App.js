@@ -3,7 +3,6 @@ import './App.css';
 import Sidebar from './layout/sidebar';
 import ChatRoom from './chatroom';
 import Home from './home';
-import Chatbot from './chatbot';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 

@@ -57,14 +57,20 @@ white-space: nowrap;
 
 .text.bot {
   align-self: flex-start;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
+  background-color: #ffffff;
+  display: flex;
+}
+
+.avatar-container{
+  margin-right:10px;
 }
 
 .text.user{
   align-self: flex-end;
 }
 
-.message .text.bot{
+.message .text.bot2{
   word-wrap: break-word;
   max-width: 100%;
   padding: 10px;

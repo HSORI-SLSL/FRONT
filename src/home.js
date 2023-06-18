@@ -20,13 +20,13 @@ function Home() {
         <div className="study-room">
           <h5>공부방</h5> 
           <div className="sejong-room">
-
+            <h5> 세종대왕</h5>
           </div>
           <div className="taejo-room">
-            
+            <h5> 태종 </h5>
           </div>
           <div className="yeongjo-room">
-            
+            <h5> 영조 </h5>
           </div>
         </div>
 
