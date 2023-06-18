@@ -36,7 +36,7 @@ function Sidebar () {
               <strong class="mb-1"> 세종대왕 </strong>
               <small>Wed</small>
               </div>
-              <div class="col-10 mb-1 small">안녕하세요.</div>
+              <div class="col-10 mb-1 small">안녕하세요</div>
           </a>
           <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
@@ -47,7 +47,7 @@ function Sidebar () {
           </a>
           <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1">세종대왕</strong>
+              <strong class="mb-1">영조</strong>
               <small class="text-muted">Mon</small>
             </div>
             <div class="col-10 mb-1 small">안녕하세요</div>

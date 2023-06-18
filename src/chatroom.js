@@ -18,7 +18,7 @@ function Chatroom() {
         { content: '...', sender: 'bot', isTyping: true  },
       ]);
 
-      const response = await axios.post('https://8cb6-1-231-206-74.ngrok-free.app/query/NORMAL', {
+      const response = await axios.post('https://9022-1-231-206-74.ngrok-free.app/query/NORMAL', {
         query: message,
       });
       const data = response.data;

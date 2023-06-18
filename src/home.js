@@ -3,16 +3,22 @@ import './home.css';
 
 function Home() {
   return (
-    <div>
+    <div className = "home">
       {/* 인물정보  */}
       <div className="person-info">
-        <h4>인물정보</h4>
+        <h5>인물정보</h5>
+        <div className="person-info2">
+          <img className="sejongImage" alt="Sejong" src="img/sejong.png" />
+          <img className="taejongImage" alt="Sejong" src="img/taejong.png" />
+          <img className="yeongjoImage" alt="Sejong" src="img/yeongjo.png" />
+
+        </div>
       </div>
 
       <div className="home-container">
         {/* 공부방  */}
         <div className="study-room">
-          <h4>공부방</h4> 
+          <h5>공부방</h5> 
           <div className="sejong-room">
 
           </div>
@@ -26,7 +32,7 @@ function Home() {
 
         {/* 추천 콘텐츠  */}
         <div className="recommended-content">
-          <h4>추천콘텐츠</h4>
+          <h5>추천콘텐츠</h5>
         </div>
       </div>
     </div>
