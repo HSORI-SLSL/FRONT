@@ -33,7 +33,9 @@ function Home() {
         {/* 추천 콘텐츠  */}
         <div className="recommended-content">
           <h5>추천콘텐츠</h5>
+          <img src="/img/abc.png" alt="Bot Avatar" className="avatar" width="250px" height="300px"/>
         </div>
+        
       </div>
     </div>
   );
