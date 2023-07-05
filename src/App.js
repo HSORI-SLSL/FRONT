@@ -3,7 +3,9 @@ import './App.css';
 import Sidebar from './layout/sidebar';
 import ChatRoom from './chatroom';
 import Home from './home';
+import Login from './log/Login';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Signup from './log/Signup';
 
 
 function App() { 
@@ -15,6 +17,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/chatroom" element={<ChatRoom/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/signup" element={<Signup/>}/>
         </Routes>
       </BrowserRouter>
     </div>
