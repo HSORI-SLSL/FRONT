@@ -6,6 +6,7 @@ import Home from './home';
 import Login from './log/Login';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Signup from './log/Signup';
+import app from "./firebase";
 
 
 function App() { 
