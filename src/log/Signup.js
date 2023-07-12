@@ -1,67 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-function Auth() {
+function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isSignup, setIsSignup] = useState(true);
-  const [isLoggedin, setIsLoggedin] = useState(false);
   const auth = getAuth();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setIsLoggedin(true);
-      } else {
-        setIsLoggedin(false);
-      }
-    });
-    return unsubscribe;
-  }, []);
-
-  const toggleSignup = () => {
-    setIsSignup((prevIsSignup) => !prevIsSignup);
-  };
-
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (isSignup) {
-      Signup();
-    } else {
-      signin();
-    }
-  };
-
-  const Signup = async () => {
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password);
       console.log("Signup success:", result.user);
+      alert("회원가입에 성공했습니다."); // Display success message in an alert
+      navigate("/login"); // Redirect to the login page
     } catch (error) {
       console.error("Signup error:", error);
     }
   };
 
-  const signin = async () => {
-    try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
-      console.log("Signin success:", result.user);
-    } catch (error) {
-      console.error("Signin error:", error);
-    }
-  };
-
   return (
     <div>
-      <h1>로그인 페이지</h1>
-      {isLoggedin ? "로그인됨" : "로그인 안 됨"}
-      <button onClick={toggleSignup}>회원가입 / 로그인 변경</button>
+      <h1>회원가입 페이지</h1>
       <form onSubmit={onSubmit}>
         <input type="text" name="email" onChange={(e) => setEmail(e.target.value)} />
         <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">{isSignup ? "회원가입" : "로그인"}</button>
+        <button type="submit">회원가입</button>
       </form>
+      <p>
+        이미 회원이신가요?{" "}
+        <Link to="/login">로그인 페이지로 이동</Link>
+      </p>
     </div>
   );
 }
 
-export default Auth;
+export default Signup;
