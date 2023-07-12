@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './home.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Home() {
   return (
@@ -30,10 +32,16 @@ function Home() {
           </div>
         </div>
 
-        {/* 추천 콘텐츠  */}
+        {/* 추천 콘텐츠 */}
         <div className="recommended-content">
-          <h5>추천콘텐츠</h5>
-          <img src="/img/abc.png" alt="Bot Avatar" className="avatar" width="250px" height="300px"/>
+          <div className="content-header">
+            <h5>추천콘텐츠</h5>
+            <Link to="/contents">
+              {/* 아이콘 넣기 */}
+              <FontAwesomeIcon icon="fa-regular fa-chevron-right" />
+            </Link>
+          </div>
+          <img src="/img/abc.png" alt="Bot Avatar" className="avatar" width="250px" height="300px" />
         </div>
         
       </div>

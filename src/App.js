@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Sidebar from './layout/sidebar';
+import Sidebar from './layout/Sidebar';
 import ChatRoom from './chatroom';
 import Home from './home';
 import Login from './log/Login';
 import Signup from './log/Signup';
-import app from './firebase';
+import app from './log/firebase';
+import Land from './land';
+import Studyroom from './studyroom';
+import Quiz from './quiz';
+import Contents from './contents';
 
 function App() {
   return (
@@ -16,6 +20,10 @@ function App() {
         <Route path="/chatroom" element={<WithSidebar component={ChatRoom} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/land" element={<Land/>}/>
+        <Route path="/studyroom" element={<Studyroom/>}/>
+        <Route path="/quiz" element={<Quiz/>}/>
+        <Route path="/contents" element={<Contents/>}/>
       </Routes>
     </BrowserRouter>
   );
