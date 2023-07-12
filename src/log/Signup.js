@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import Form from "react-bootstrap/Form"; 
+import Button from "react-bootstrap/Button";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+
+
+
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -22,12 +30,38 @@ function Signup() {
 
   return (
     <div>
-      <h1>회원가입 페이지</h1>
-      <form onSubmit={onSubmit}>
-        <input type="text" name="email" onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">회원가입</button>
-      </form>
+      <Container className="panel d-flex justify-content-center align-items-center">
+        <Form onSubmit={onSubmit}>
+          <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+            <Col sm={12}>
+              <Form.Control
+                type="email"
+                placeholder="Email"
+                value={email} // 바인딩된 email 상태를 value로 설정
+                onChange={(e) => setEmail(e.target.value)} // email 상태 업데이트
+              />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+            <Col sm={12}>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password} // 바인딩된 password 상태를 value로 설정
+                onChange={(e) => setPassword(e.target.value)} // password 상태 업데이트
+              />
+            </Col>
+          </Form.Group>
+          <br />
+
+          <div className="d-grid gap-1">
+            <Button variant="secondary" type="submit">
+              회원가입
+            </Button>
+          </div>
+        </Form>
+      </Container>
       <p>
         이미 회원이신가요?{" "}
         <Link to="/login">로그인 페이지로 이동</Link>
