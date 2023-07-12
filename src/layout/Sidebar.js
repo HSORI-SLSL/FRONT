@@ -1,8 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './sidebars.css';
+import { getAuth, signOut } from 'firebase/auth';
+
 
 
 function Sidebar () {
+
+
+  const [isLoggedin, setIsLoggedin] = useState(false);
+
+
+
+
+  useEffect(() => {
+    // 사용자가 이미 로그인한지 확인합니다.
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    setIsLoggedin(isLoggedIn);
+  }, []);
+
+
+
+  const handleLogin = () => {
+    setIsLoggedin(true); // 로그인 성공 시 isLoggedin 값을 true로 설정
+    localStorage.setItem('isLoggedIn', 'true');
+  };
+  
+
+  const handleLogout = () => {
+    const auth = getAuth();
+    setIsLoggedin(false);
+    localStorage.setItem('isLoggedIn', 'false'); // 로그인 상태를 localStorage에 저장합니다.
+    signOut(auth)
+      .then(() => {
+        console.log('로그아웃 성공');
+        setIsLoggedin(false);
+      })
+      .catch((error) => {
+        console.log('로그아웃 에러:', error);
+      });
+
+  };
+  
+ const clickMe = () => {
+    window.location.href = "http://localhost:3000/login";
+  };
+
+  
   return (
     <div className="Sidebar">
       <div class="d-flex flex-column align-items-stretch flex-shrink-0" style={ { width : '250px', backgroundColor:'#F3F2EB'}}>
@@ -60,17 +103,24 @@ function Sidebar () {
         </div>
   
         {/* 로그아웃 버튼 */}
-        <button type="button" class="btn btn-light" style={ { marginTop : '130px' } }>
-          {/* 맥북 = 200 
-          윈도우 = 160 */}
+        {isLoggedin ? (
+        <button onClick={handleLogout} type="button" class="btn btn-light" style={{ marginTop: '130px' }}>
           로그아웃
+          
         </button>
+      ) : (
+        <button onClick={() => {  clickMe(); handleLogin();}} type="button" class="btn btn-light" style={{ marginTop: '130px' }}>
+          로그인
+        </button>
+        
+      )}
       </div>
     </div>
   )
 }
 
-// /* global bootstrap: false */
+
+/* global bootstrap: false */
 // (function () {
 //   'use strict'
 //   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -81,3 +131,5 @@ function Sidebar () {
 
 
 export default Sidebar;
+
+
