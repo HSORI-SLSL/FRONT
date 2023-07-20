@@ -1,98 +1,83 @@
+/* home.css */
 .home {
-  background-color: #FFFFFF;  
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
 }
-
 
 /* 인물정보 */
 .person-info {
   background-color: #F3F2EB;
-  justify-content: center; /* 가운데 정렬 */
-  align-items: center; /* 가운데 정렬 */
-  width:1100px;
-  height:200px;
+  justify-content: center;
+  align-items: center;
+  max-width: 1100px; 
+  width: 100%; 
+  height: 200px;
   padding: 20px;
-  margin-top:20px;
+  margin-top: 20px;
   margin-bottom: 20px;
-  margin-left:50px;
   border-radius: 10px;
 }
 
-.person-info2{
+.person-info2 {
   background-color: #F3F2EB;
-  justify-content: center; /* 가운데 정렬 */
-  width:800px;
+  justify-content: center;
+  max-width: 800px; 
+  width: 80%; 
   height: 140px;
-  margin-left:150px;
-
-}
-
-.sejongImage{
-  width: 100px;
-  height: 100px;
-  margin-left: 50px;
-}
-.taejongImage{
-  width: 100px;
-  height: 100px;
   margin-left: 100px;
+  margin-right: 50px;
 }
-.yeongjoImage{
+
+.sejongImage, .taejongImage, .yeongjoImage {
   width: 100px;
   height: 100px;
-  margin-left: 150px;
+  margin-left: 100px; 
 }
 
 .home-container {
   display: flex;
-  justify-content: center; /* 가운데 정렬 */
-  align-items: center; /* 가운데 정렬 */
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  max-width: 1200px; 
+  margin-top: 20px;
 }
 
 /* 공부방 */
 .study-room {
   background-color: #F3F2EB;
   padding: 20px;
-  width: 400px;
-  height: 400px;
-  margin-right: 10px;
-  margin-bottom: 20px;
+  flex: 1; 
+  min-width: 300px; 
+  max-width: 500px; 
+  margin: 10px; 
   display: inline-block;
   border-radius: 10px;
+  width:1000px;
+  height: 370px;
 }
 
-.sejong-room {
+.sejong-room, .taejo-room, .yeongjo-room {
   background-color: #fff;
-  width: 350px;
-  height: 100px;
+  width: 100%;
+  height: 80px;
   padding: 10px;
-  margin-bottom: 10px;
-}
-
-.taejo-room {
-  background-color: #fff;
-  width: 350px;
-  height: 100px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.yeongjo-room {
-  background-color: #fff;
-  width: 350px;
-  height: 100px;
-  padding: 10px;
-  margin-bottom: 10px;
+  margin-top:20px;
 }
 
 /* 추천콘텐츠 */
 .recommended-content {
   background-color: #F3F2EB;
-  width: 400px;
-  height: 400px;
+  flex: 1; 
+  min-width: 300px; 
+  max-width: 500px; 
   padding: 20px;
-  margin-left: 30px;
-  margin-bottom: 20px;
+  margin: 10px; 
   display: inline-block;
   border-radius: 10px;
+  width: 1000px;
 }
