@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './home.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Home() {
   return (
@@ -38,7 +38,7 @@ function Home() {
             <h5>추천콘텐츠</h5>
             <Link to="/contents">
               {/* 아이콘 넣기 */}
-              <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
+              {/* <FontAwesomeIcon icon="fa-solid fa-chevron-right" /> */}
             </Link>
           </div>
           <img src="/img/abc.png" alt="Bot Avatar" className="avatar" width="250px" height="300px" />

@@ -21,9 +21,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/land" element={<Land/>}/>
-        <Route path="/studyroom" element={<Studyroom/>}/>
-        <Route path="/quiz" element={<Quiz/>}/>
-        <Route path="/contents" element={<Contents/>}/>
+        <Route path="/studyroom" element={<WithSidebar component ={Studyroom}/>}/>
+        <Route path="/quiz" element={<WithSidebar component ={Quiz}/>}/>
+        <Route path="/contents" element={<WithSidebar component ={Contents}/>}/>
       </Routes>
     </BrowserRouter>
   );
