@@ -34,8 +34,8 @@ function Login() {
   };
 
   return (
-    <div>
-      <Container className="panel d-flex justify-content-center align-items-center">
+    <div className="d-flex flex-column align-items-center" style={{ minHeight: "100vh" }}>
+      <Container className="panel" style={{ maxWidth: "350px", marginTop: "250px" }}>
         <Form onSubmit={onSubmit}>
           <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
             <Col sm={12}>
@@ -68,11 +68,11 @@ function Login() {
             </Button>
           </div>
         </Form>
-      </Container>
 
-      <p>
-        회원이 아니신가요? <Link to="/signup">회원가입 페이지로 이동</Link>
-      </p>
+        <p  style={{ marginTop: "15px" }}>
+          회원이 아니신가요? <Link to="/signup">회원가입 페이지로 이동</Link>
+        </p>
+      </Container>
     </div>
   );
 }

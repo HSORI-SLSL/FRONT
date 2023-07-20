@@ -29,8 +29,8 @@ function Signup() {
   };
 
   return (
-    <div>
-      <Container className="panel d-flex justify-content-center align-items-center">
+    <div className="d-flex flex-column align-items-center" style={{ minHeight: "100vh" }}>
+      <Container className="panel" style={{ maxWidth: "350px", marginTop: "250px" }}>
         <Form onSubmit={onSubmit}>
           <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
             <Col sm={12}>
@@ -62,7 +62,7 @@ function Signup() {
           </div>
         </Form>
       </Container>
-      <p>
+      <p style={{ marginTop: "15px" }}>
         이미 회원이신가요?{" "}
         <Link to="/login">로그인 페이지로 이동</Link>
       </p>

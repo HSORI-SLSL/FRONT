@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './home.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 
 function Home() {
   return (
@@ -19,7 +23,10 @@ function Home() {
       <div className="home-container">
         {/* 공부방  */}
         <div className="study-room">
-          <h5>공부방</h5> 
+        <h5>공부방  <Link to="/quiz">
+              {/* 아이콘 넣기 */}
+              <FontAwesomeIcon icon={faChevronRight} />
+            </Link></h5> 
           <div className="sejong-room">
             <h5> 세종대왕</h5>
           </div>
@@ -34,11 +41,10 @@ function Home() {
         {/* 추천 콘텐츠 */}
         <div className="recommended-content">
           <div className="content-header">
-            <h5>추천콘텐츠</h5>
-            <Link to="/contents">
+          <h5>추천콘텐츠  <Link to="/contents">
               {/* 아이콘 넣기 */}
-              
-            </Link>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </Link></h5>
           </div>
           <img src="/img/abc.png" alt="Bot Avatar" className="avatar" width="250px" height="300px" />
         </div>
