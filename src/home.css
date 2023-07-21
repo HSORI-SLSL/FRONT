@@ -22,14 +22,50 @@
   border-radius: 10px;
 }
 
+
 .person-info2 {
   background-color: #F3F2EB;
-  justify-content: center;
   max-width: 800px; 
   width: 80%; 
   height: 140px;
   margin-left: 100px;
   margin-right: 50px;
+  flex-direction: column; 
+  display: flex;
+  flex-direction: row; 
+  
+
+  justify-content: space-between;
+}
+
+
+.person-info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; 
+}
+
+.person-info-item .person-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 45px; /* 수정: 사각형 모양을 위해 border-radius 값을 조정합니다. */
+  margin-right: 10px;
+}
+
+.person-info-item div {
+  margin-left: 10px;
+}
+
+.person-info-item h6 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.person-info-item p {
+  margin: 0;
+  font-size: 12px;
+  color: #888;
 }
 
 .sejongImage, .taejongImage, .yeongjoImage {

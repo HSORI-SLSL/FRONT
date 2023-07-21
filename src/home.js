@@ -11,22 +11,43 @@ function Home() {
     <div className = "home">
       {/* 인물정보  */}
       <div className="person-info">
-        <h5>인물정보</h5>
+      <h5>인물정보</h5>
         <div className="person-info2">
-          <img className="sejongImage" alt="Sejong" src="img/sejong.png" />
-          <img className="taejongImage" alt="Sejong" src="img/taejong.png" />
-          <img className="yeongjoImage" alt="Sejong" src="img/yeongjo.png" />
-
+          <div className="person-info-item">
+            <div className="person-info-image">
+              <img className="person-image" alt="Sejong" src="img/sejong.png" />
+            </div>
+            <div className="person-info-text">
+              <h6>세종대왕</h6>
+              <p>1397.05.15 ~ 1450.03.30</p>
+            </div>
+          </div>
+          <div className="person-info-item">
+            <div className="person-info-image">
+              <img className="person-image" alt="Sejong" src="img/taejong.png" />
+            </div>
+            <div className="person-info-text">
+              <h6>태종</h6>
+              <p>1367.06.13 ~ 1422.05.30</p>
+            </div>
+          </div>
+          <div className="person-info-item">
+            <div className="person-info-image">
+              <img className="person-image" alt="Sejong" src="img/yeongjo.png" />
+            </div>
+            <div className="person-info-text">
+              <h6>영조</h6>
+              <p>1694.10.31 ~ 1776.04.22</p>
+            </div>
+          </div>
         </div>
       </div>
+
 
       <div className="home-container">
         {/* 공부방  */}
         <div className="study-room">
-        <h5>공부방  <Link to="/quiz">
-              {/* 아이콘 넣기 */}
-              <FontAwesomeIcon icon={faChevronRight} />
-            </Link></h5> 
+        <h5>공부방</h5> 
           <div className="sejong-room">
             <h5> 세종대왕</h5>
           </div>
@@ -41,10 +62,7 @@ function Home() {
         {/* 추천 콘텐츠 */}
         <div className="recommended-content">
           <div className="content-header">
-          <h5>추천콘텐츠  <Link to="/contents">
-              {/* 아이콘 넣기 */}
-              <FontAwesomeIcon icon={faChevronRight} />
-            </Link></h5>
+          <h5>추천콘텐츠</h5>
           </div>
           <img src="/img/abc.png" alt="Bot Avatar" className="avatar" width="250px" height="300px" />
         </div>

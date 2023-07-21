@@ -30,11 +30,13 @@ function Signup() {
 
   return (
     <div className="d-flex flex-column align-items-center" style={{ minHeight: "100vh" }}>
-      <Container className="panel" style={{ maxWidth: "350px", marginTop: "250px" }}>
+       <h4 className="text-center" style={{ marginTop: "200px"}}>회원가입</h4>
+             
+      <Container className="panel" style={{ maxWidth: "350px", marginTop: "60px" }}>
         <Form onSubmit={onSubmit}>
           <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
             <Col sm={12}>
-              <Form.Control
+            <Form.Control
                 type="email"
                 placeholder="Email"
                 value={email} // 바인딩된 email 상태를 value로 설정
