@@ -8,8 +8,8 @@ import Login from './log/Login';
 import Signup from './log/Signup';
 import app from './log/firebase';
 import Land from './land';
-import Studyroom from './studyroom';
-import Quiz from './quiz';
+import Sejongroom from './sejongroom';
+import Sejongquiz from './sejongquiz';
 import Contents from './contents';
 
 function App() {
@@ -21,8 +21,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/land" element={<Land/>}/>
-        <Route path="/studyroom" element={<WithSidebar component ={Studyroom}/>}/>
-        <Route path="/quiz" element={<WithSidebar component ={Quiz}/>}/>
+        <Route path="/sejongroom" element={<WithSidebar component ={Sejongroom}/>}/>
+        <Route path="/sejongquiz" element={<WithSidebar component ={Sejongquiz}/>}/>
         <Route path="/contents" element={<WithSidebar component ={Contents}/>}/>
       </Routes>
     </BrowserRouter>

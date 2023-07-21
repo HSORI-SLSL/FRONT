@@ -11,6 +11,9 @@ function Land() {
       <Link to="/signup">
         <button>회원가입</button>
       </Link>
+      <Link to="/">
+        <button>홈화면으로 이동</button>
+      </Link>
     </div>
   );
 }

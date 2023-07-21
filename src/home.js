@@ -49,7 +49,9 @@ function Home() {
         <div className="study-room">
         <h5>공부방</h5> 
           <div className="sejong-room">
-            <h5> 세종대왕</h5>
+          <Link to="/sejongroom" className="link-black">
+          <h5>세종대왕</h5>
+          </Link>
           </div>
           <div className="taejo-room">
             <h5> 태종 </h5>
@@ -60,14 +62,14 @@ function Home() {
         </div>
 
         {/* 추천 콘텐츠 */}
-        <Link to="/contents" className="link-black">
         <div className="recommended-content">
           <div className="content-header">
+          <Link to="/contents" className="link-black">
           <h5>추천콘텐츠</h5>
+          </Link>
           </div>
           <img src="/img/abc.png" alt="Bot Avatar" className="avatar" width="250px" height="300px" />
         </div>
-        </Link>
         
       </div>
     </div>
