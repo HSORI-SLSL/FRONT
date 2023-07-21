@@ -2,9 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './home.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-
 
 function Home() {
   return (

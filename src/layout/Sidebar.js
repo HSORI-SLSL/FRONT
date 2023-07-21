@@ -1,31 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import './sidebars.css';
-import { getAuth, signOut } from 'firebase/auth';
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 
 
 
 function Sidebar () {
 
-
   const [isLoggedin, setIsLoggedin] = useState(false);
-
-  
-
-
+  const [userEmail, setUserEmail] = useState('');
 
   useEffect(() => {
     // 사용자가 이미 로그인한지 확인합니다.
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     setIsLoggedin(isLoggedIn);
-  }, []);
 
+    // Firebase 인증 상태가 변경될 때마다 호출되는 콜백 함수 등록
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserEmail(user.email);
+      }else {
+        setUserEmail(''); // 사용자 로그아웃 시 이메일 초기화
+      }
+    });
+  }, []);
 
 
   const handleLogin = () => {
     setIsLoggedin(true); // 로그인 성공 시 isLoggedin 값을 true로 설정
     localStorage.setItem('isLoggedIn', 'true');
   };
-  
 
   const handleLogout = () => {
     const auth = getAuth();
@@ -50,9 +54,6 @@ function Sidebar () {
   return (
     <div className="Sidebar">
       <div class="d-flex flex-column align-items-stretch flex-shrink-0" style={ { width : '250px', backgroundColor:'#F3F2EB'}}>
-      {/* backgroundColor:'#F3F2EB' 
-          backgroundImage : "url(/hi.png"
-          position:'fixed'*/}
         {/* 홈 */}
         <div> 
           <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none">
@@ -66,7 +67,7 @@ function Sidebar () {
           <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
           <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
         </svg>
-        <div className='user'> 사용자 </div>
+        <div className='user'> {userEmail ? `${userEmail}` : '사용자'} </div>
         
         {/* 채팅 목록 부분 */}
         <span class="fs-5 fw-semibold" style={ { marginTop : '90px' } }>
