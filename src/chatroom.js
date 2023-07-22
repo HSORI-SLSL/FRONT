@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './chatroom.css';
 import axios from 'axios'
+import Sidebar from './layout/Sidebar';
+
+import { useLastMessageContext } from './LastMessageContext'; // Make sure the correct path is used here
 
 function Chatroom() {
   const [query, setQuery] = useState('');
@@ -8,6 +11,8 @@ function Chatroom() {
   const [question, setQuizQuestion] = useState('');
   const [answer, setQuizAnswer] = useState('');
   const [quizMode, setQuizMode] = useState(false);
+
+  const { lastMessageContent, setLastMessageContent } = useLastMessageContext();
 
   const handleMessageChange = (event) => {
     setQuery(event.target.value);
@@ -72,6 +77,11 @@ function Chatroom() {
 
   // 첫 인사
   useEffect(() => {
+
+    if (messages.length > 0) {
+      setLastMessageContent(messages[messages.length - 1].content);
+    }
+
     if (!initialGreetingDisplayed.current) {
       const initialGreeting = '안녕하세요!'; // Initial greeting message
       setMessages((prevMessages) => [
@@ -81,7 +91,8 @@ function Chatroom() {
       initialGreetingDisplayed.current = true;
     }
     scrollToBottom();
-  }, []);
+    
+  }, [messages]);
 
   // 자동으로 밑으로 내리는 스크롤바
   useEffect(() => {
@@ -200,6 +211,8 @@ function Chatroom() {
           </button>
         </div>
       </div>
+
+      
     </div>
   );
 }

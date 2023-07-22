@@ -12,10 +12,14 @@ import Sejongroom from './sejongroom';
 import Sejongquiz from './sejongquiz';
 import Contents from './contents';
 
+import { LastMessageProvider } from './LastMessageContext'; // 추가
+
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
+    <LastMessageProvider>
+
+    <Routes>
         <Route path="/" element={<WithSidebar component={Home} />} />
         <Route path="/chatroom" element={<WithSidebar component={ChatRoom} />} />
         <Route path="/login" element={<Login />} />
@@ -25,7 +29,11 @@ function App() {
         <Route path="/sejongquiz" element={<WithSidebar component ={Sejongquiz}/>}/>
         <Route path="/contents" element={<WithSidebar component ={Contents}/>}/>
       </Routes>
+      </LastMessageProvider>
     </BrowserRouter>
+
+   
+      
   );
 }
 

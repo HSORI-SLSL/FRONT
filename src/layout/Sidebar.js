@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './sidebars.css';
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 
+import { useLastMessageContext } from '../LastMessageContext';
 
 
 function Sidebar () {
@@ -9,7 +10,14 @@ function Sidebar () {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [userEmail, setUserEmail] = useState('');
 
+  const [localLastMessageContent, setLocalLastMessageContent] = useState('');
+
+  const { lastMessageContent } = useLastMessageContext();
+
   useEffect(() => {
+
+    setLocalLastMessageContent(lastMessageContent);
+
     // 사용자가 이미 로그인한지 확인합니다.
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     setIsLoggedin(isLoggedIn);
@@ -23,7 +31,7 @@ function Sidebar () {
         setUserEmail(''); // 사용자 로그아웃 시 이메일 초기화
       }
     });
-  }, []);
+  },[lastMessageContent]);
 
 
   const handleLogin = () => {
@@ -75,19 +83,22 @@ function Sidebar () {
         <span class="fs-5 fw-semibold" style={ { marginTop : '90px' } }>
         채팅 목록
         </span>
+
         {/* 채팅 list group */}
         {/* 세종대왕 채팅 목록  */}
-        <div class="list-group list-group-flush border-bottom ">
-          <a href="http://localhost:3000/chatroom" class="list-group-item list-group-item-action py-3 lh-tight">
-            <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1" margin="30px"> 
-              <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px"  style={{marginRight:'10px'}}/>
-              세종대왕 
-              </strong>
-              <small>Wed</small>
-              </div>
-              <div class="col-10 mb-1 small">안녕하세요</div>
-          </a>
+      <div class="list-group list-group-flush border-bottom">
+        <a href="http://localhost:3000/chatroom" class="list-group-item list-group-item-action py-3 lh-tight">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1" margin="30px">
+              <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
+              세종대왕
+            </strong>
+            <small>Wed</small>
+          </div>
+          <div className="col-10 mb-1 small">{lastMessageContent} </div>
+        </a>
+
+
           <a href="http://localhost:3000/chatroom" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
               <strong class="mb-1"><img src="/img/taejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{marginRight:'10px'}}/>
