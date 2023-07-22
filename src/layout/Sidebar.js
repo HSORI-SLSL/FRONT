@@ -39,6 +39,8 @@ function Sidebar () {
       .then(() => {
         console.log('로그아웃 성공');
         setIsLoggedin(false);
+        window.location.href = "http://localhost:3000/";
+
       })
       .catch((error) => {
         console.log('로그아웃 에러:', error);
