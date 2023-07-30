@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './chatroom.css';
 import axios from 'axios'
-import Sidebar from './layout/Sidebar';
-
 import { useLastMessageContext } from './LastMessageContext'; // Make sure the correct path is used here
 
 function Chatroom() {
@@ -14,6 +12,9 @@ function Chatroom() {
 
   const { lastMessageContent, setLastMessageContent } = useLastMessageContext();
 
+
+  
+  
   const handleMessageChange = (event) => {
     setQuery(event.target.value);
   };
@@ -81,6 +82,7 @@ function Chatroom() {
     if (messages.length > 0) {
       setLastMessageContent(messages[messages.length - 1].content);
     }
+
 
     if (!initialGreetingDisplayed.current) {
       const initialGreeting = '안녕하세요!'; // Initial greeting message

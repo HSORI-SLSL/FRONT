@@ -15,6 +15,7 @@ function Contents() {
   };
 
   return (
+    
     <div>
       <h1>인물 선택</h1>
       <button onClick={() => handlePersonSelect('인물1')}>세종대왕</button>
