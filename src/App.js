@@ -8,8 +8,8 @@ import Login from './log/Login';
 import Signup from './log/Signup';
 import app from './log/firebase';
 import Land from './land';
-import Sejongroom from './sejongroom';
-import Sejongquiz from './sejongquiz';
+import Sejongroom from './studyroom/sejongroom';
+import Sejongquiz from './studyroom/sejongquiz';
 import Contents from './contents';
 
 import { LastMessageProvider } from './LastMessageContext'; // 추가
@@ -31,8 +31,6 @@ function App() {
       </Routes>
       </LastMessageProvider>
     </BrowserRouter>
-
-   
       
   );
 }

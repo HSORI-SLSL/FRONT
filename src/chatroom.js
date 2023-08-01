@@ -98,7 +98,7 @@ function Chatroom() {
     chatRef.current.scrollTop = chatRef.current.scrollHeight;
   };
 
-  // 퀴즈 버튼 클릭하면 실행되는 것
+  // 퀴즈
   const handleQuizButtonClick = async () => {
     const quizMessage = '퀴즈를 시작합니다.';
     setMessages((prevMessages) => [
