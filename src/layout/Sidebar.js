@@ -96,7 +96,7 @@ function Sidebar () {
             </strong>
             <small>Wed</small>
           </div>
-          <div className="col-10 mb-1 small">{lastMessageContent.substring(0, 30)}</div>
+          <div className="col-10 mb-1 small">{lastMessageContent.substring(0, 25)}</div>
 
         </a>
 

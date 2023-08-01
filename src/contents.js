@@ -1,47 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function Contents() {
-  const [selectedPerson, setSelectedPerson] = useState(null);
-  const [relatedContents, setRelatedContents] = useState(null);
+const ContentList = () => {
+  const [contents, setContents] = useState([]);
 
-  const handlePersonSelect = (person) => {
-    setSelectedPerson(person);
+  useEffect(() => {
+    // 백엔드 API 호출을 위한 함수 정의
+    const fetchContentsFromBackend = async () => {
+      try {
+        const response = await axios.get('https://52e3-1-231-206-74.ngrok-free.app/query/CRAWL', {
+          withCredentials: false, // withCredentials 설정을 false로 변경
+        });
+        setContents(response.data); // API에서 받은 데이터로 contents 상태 업데이트
+      } catch (error) {
+        console.error('Error fetching contents from backend:', error);
+      }
+    };
 
-    // 백엔드 API 호출
-    fetch(`https://1495-1-231-206-74.ngrok-free.app/query/crawl_watcha?person=${person}`)
-      .then((response) => response.json())
-      .then((data) => setRelatedContents(data))
-      .catch((error) => console.error('Error fetching related contents:', error));
-  };
+    fetchContentsFromBackend(); // 함수 호출로 API 데이터 가져오기
+  }, []);
 
   return (
-    
     <div>
-      <h1>인물 선택</h1>
-      <button onClick={() => handlePersonSelect('인물1')}>세종대왕</button>
-      <button onClick={() => handlePersonSelect('인물2')}>태종</button>
-      <button onClick={() => handlePersonSelect('인물3')}>영조</button>
-
-      {selectedPerson && relatedContents && (
-        <div>
-          <h1>{selectedPerson}에 대한 연관콘텐츠</h1>
-          <h2>영화</h2>
-          <ul>
-            {relatedContents.movies.map((movie, index) => (
-              <li key={index}>{movie.title}</li>
-            ))}
-          </ul>
-
-          <h2>도서</h2>
-          <ul>
-            {relatedContents.books.map((book, index) => (
-              <li key={index}>{book.title}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <h2>콘텐츠 목록</h2>
+      <ul>
+        {contents.map((content, index) => (
+          <li key={index}>
+            <img src={content.img_urls} alt={content.title} />
+            <h3>{content.title}</h3>
+            <p>{content.info}</p>
+            <p>카테고리: {content.category}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
 
-export default Contents;
+export default ContentList;

@@ -1,51 +1,48 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './chatroom.css';
-import axios from 'axios'
-import { useLastMessageContext } from './LastMessageContext'; // Make sure the correct path is used here
+import axios from 'axios';
+import { useLastMessageContext } from './LastMessageContext';
 
 function Chatroom() {
   const [query, setQuery] = useState('');
   const [messages, setMessages] = useState([]);
-  const [question, setQuizQuestion] = useState('');
-  const [answer, setQuizAnswer] = useState('');
   const [quizMode, setQuizMode] = useState(false);
+  const [quizAnswer, setQuizAnswer] = useState('');
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-  const { lastMessageContent, setLastMessageContent } = useLastMessageContext();
+  const { setLastMessageContent } = useLastMessageContext();
 
-
-  
-  
   const handleMessageChange = (event) => {
     setQuery(event.target.value);
   };
 
+  // 메시지 보내고 답 받아오기
   const sendMessage = async (message) => {
     try {
-      // 답변 받기 전 기다리는 말풍선
       setMessages((prevMessages) => [
         ...prevMessages,
         { content: '...', sender: 'bot', isTyping: true },
       ]);
 
-      const response = await axios.post('https://1495-1-231-206-74.ngrok-free.app/query/NORMAL', {
+      const response = await axios.post('https://52e3-1-231-206-74.ngrok-free.app/query/NORMAL', {
         query: message,
       });
       const data = response.data;
       const answer = data.Answer;
 
-      // 답변 받으면 ...말풍선 사라지게 하기
       setMessages((prevMessages) => [
-        ...prevMessages.slice(0, -1), // Remove the waiting message bubble
+        ...prevMessages.slice(0, -1),
         { content: answer, sender: 'bot' },
       ]);
 
       return answer;
     } catch (error) {
       console.error(error);
+      // 오류가 났을때
       return '오류';
     }
   };
-  
+
   const handleMessageSubmit = async (e) => {
     e.preventDefault();
     if (query.trim() !== '') {
@@ -66,7 +63,7 @@ function Chatroom() {
     }
   };
 
-  // 엔터 키 누르면 보내짐
+  // 엔터키로 보내기
   const enterKeyEventHandler = (e) => {
     if (e.key === 'Enter') {
       handleMessageSubmit(e);
@@ -76,16 +73,14 @@ function Chatroom() {
   const chatRef = useRef(null);
   const initialGreetingDisplayed = useRef(false);
 
-  // 첫 인사
   useEffect(() => {
-
     if (messages.length > 0) {
       setLastMessageContent(messages[messages.length - 1].content);
     }
 
-
+    // 첫인사
     if (!initialGreetingDisplayed.current) {
-      const initialGreeting = '안녕하세요!'; // Initial greeting message
+      const initialGreeting = '안녕하신가!';
       setMessages((prevMessages) => [
         ...prevMessages,
         { content: initialGreeting, sender: 'bot' },
@@ -93,10 +88,8 @@ function Chatroom() {
       initialGreetingDisplayed.current = true;
     }
     scrollToBottom();
-    
   }, [messages]);
 
-  // 자동으로 밑으로 내리는 스크롤바
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
@@ -105,6 +98,7 @@ function Chatroom() {
     chatRef.current.scrollTop = chatRef.current.scrollHeight;
   };
 
+  // 퀴즈 버튼 클릭하면 실행되는 것
   const handleQuizButtonClick = async () => {
     const quizMessage = '퀴즈를 시작합니다.';
     setMessages((prevMessages) => [
@@ -112,23 +106,18 @@ function Chatroom() {
       { content: quizMessage, sender: 'user' },
     ]);
 
-    // 퀴즈 시작을 백엔드 서버에 요청
     try {
-      const response = await axios.post('https://1495-1-231-206-74.ngrok-free.app/query/QUIZ', {
+      const response = await axios.post('https://52e3-1-231-206-74.ngrok-free.app/query/QUIZ', {
         BotType: 'QUIZ',
       });
       const data = response.data;
 
-      // 서버에서 받은 퀴즈 질문과 답을 저장
       const question = data.Answer;
       const answer = data.label;
 
-      // 퀴즈 질문과 답을 상태로 저장하고 퀴즈 모드를 활성화
-      setQuizQuestion(question);
       setQuizAnswer(answer);
       setQuizMode(true);
 
-      // 퀴즈 질문을 메시지로 추가
       setMessages((prevMessages) => [
         ...prevMessages,
         { content: question, sender: 'bot' },
@@ -138,48 +127,94 @@ function Chatroom() {
     }
   };
 
+  // 퀴즈 종료 버튼 누르면 실행되는 것
   const handleQuizEndButtonClick = () => {
-    const quizEndMessage = '퀴즈 종료';
+    const quizEndMessage = '퀴즈를 종료합니다.';
     setMessages((prevMessages) => [
       ...prevMessages,
       { content: quizEndMessage, sender: 'user' },
     ]);
 
     setQuizMode(false);
+    setSelectedAnswer(null); // 퀴즈 종료 시 사용자의 정답 초기화
+  };
+
+  // o/x 버튼 누를 시
+  const handleAnswerButtonClick = (isCorrect) => {
+    if (isCorrect) {
+      const correctMessage = '정답이다!';
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { content: `O`, sender: 'user' },
+        { content: correctMessage, sender: 'bot' },
+      ]);
+    } else {
+      const incorrectMessage = '오답이다!';
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { content: `X`, sender: 'user' },
+        { content: incorrectMessage, sender: 'bot' },
+      ]);
+    }
+
+    setQuizMode(false);
+  };
+
+  // o 버튼 클릭
+  const handleCorrectButtonClick = () => {
+    handleAnswerButtonClick(true);
+  };
+
+  // x 버튼 클릭
+  const handleIncorrectButtonClick = () => {
+    handleAnswerButtonClick(false);
   };
 
   return (
     <div className="chat-room container">
       <div className="chatheader chat-header-card">
-        {/* 각 왕의 이름 */}
         <div className="card-body d-flex justify-content-center align-items-center">
           세종대왕
         </div>
       </div>
 
-      <div className="chat-messages" ref={chatRef}>
-        {messages.map((msg, index) => (
-          <div className="message" key={index}>
-            {msg.sender === 'user' ? (
-              <div className="text user">{msg.content}</div>
-            ) : (
-              <div className="text bot">
-                {/* 왕 프로필 */}
-                <div className="avatar-container">
-                  <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" />
+      <div className="chat-messages-container">
+        <div className="chat-messages" ref={chatRef}>
+          {messages.map((msg, index) => (
+            <div className="message" key={index}>
+              {msg.sender === 'user' ? (
+                <div className="text user">{msg.content}</div>
+              ) : (
+                <div className="text bot">
+                  <div className="avatar-container">
+                    <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" />
+                  </div>
+                  <div className="text bot2">
+                    {msg.content}
+                  </div>
                 </div>
-                {/* 왕 말풍선 */}
+              )}
+            </div>
+          ))}
+          {/* o/x 버튼 */}
+          {quizMode && (
+            <>
+              <div className="text bot">
                 <div className="text bot2">
-                  {msg.content}
+                  <button type="button" className="btn btn-o" onClick={handleCorrectButtonClick}>
+                    O
+                  </button>
+                  <button type="button" className="btn btn-x" onClick={handleIncorrectButtonClick}>
+                    X
+                  </button>
                 </div>
               </div>
-            )}
-          </div>
-        ))}
+            </>
+          )}
+        </div>
       </div>
 
-
-      {/* 퀴즈 종료 버튼 */}
+      {/* 퀴즈 종료 버튼 - 퀴즈 모드일 때만 표시 */}
       {quizMode && (
         <button type="button" className="btn btn-chat" onClick={handleQuizEndButtonClick}>
           퀴즈 종료
@@ -188,12 +223,11 @@ function Chatroom() {
 
       <div className="chatfooter chat-input">
         <div className="input-group input-group-lg">
-           {/* 퀴즈 시작 버튼 */}
-            {!quizMode && (
-              <button type="button" className="btn btn-chat" onClick={handleQuizButtonClick}>
-                Q
-              </button>
-            )}
+          {!quizMode && (
+            <button type="button" className="btn btn-chat" onClick={handleQuizButtonClick}>
+              Q
+            </button>
+          )}
           <input
             type="text"
             className="form-control"
@@ -213,8 +247,6 @@ function Chatroom() {
           </button>
         </div>
       </div>
-
-      
     </div>
   );
 }
