@@ -55,6 +55,7 @@ white-space: nowrap;
  */
 }
 
+
 .text.bot {
   align-self: flex-start;
   /* background-color: #f0f0f0; */
@@ -97,6 +98,7 @@ white-space: nowrap;
   word-wrap: break-word;
 
 }
+
 
 /* 메시지 입력 부분  */
 .chat-input {

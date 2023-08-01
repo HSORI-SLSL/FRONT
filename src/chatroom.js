@@ -199,8 +199,8 @@ function Chatroom() {
           {/* o/x 버튼 */}
           {quizMode && (
             <>
-              <div className="text bot">
-                <div className="text bot2">
+              <div className="quiz bot">
+                <div className="quiz bot2">
                   <button type="button" className="btn btn-o" onClick={handleCorrectButtonClick}>
                     O
                   </button>
