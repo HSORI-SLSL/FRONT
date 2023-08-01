@@ -135,6 +135,7 @@ function Chatroom() {
       { content: quizEndMessage, sender: 'user' },
     ]);
 
+
     setQuizMode(false);
     setSelectedAnswer(null); // 퀴즈 종료 시 사용자의 정답 초기화
   };
@@ -198,9 +199,9 @@ function Chatroom() {
           ))}
           {/* o/x 버튼 */}
           {quizMode && (
-            <>
-              <div className="quiz bot">
-                <div className="quiz bot2">
+            <div className="quiz">
+              <div className="quiz-bot">
+                <div className="quiz-bot2">
                   <button type="button" className="btn btn-o" onClick={handleCorrectButtonClick}>
                     O
                   </button>
@@ -209,7 +210,7 @@ function Chatroom() {
                   </button>
                 </div>
               </div>
-            </>
+            </div>
           )}
         </div>
       </div>

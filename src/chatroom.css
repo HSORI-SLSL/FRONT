@@ -100,6 +100,18 @@ white-space: nowrap;
 }
 
 
+
+/* 퀴즈 모드에서 사용자 말풍선 색상 */
+.quiz .text.user {
+  background-color: #F5DEB3; /* 바이올렛 배경색 */
+}
+
+/* 퀴즈 모드에서 봇 말풍선 색상 */
+.quiz .text.bot2 {
+  background-color: #FFDAB9; /* 피치 배경색 */
+}
+
+
 /* 메시지 입력 부분  */
 .chat-input {
   position: fixed;
