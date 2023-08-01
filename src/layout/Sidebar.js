@@ -4,6 +4,20 @@ import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 
 import { useLastMessageContext } from '../LastMessageContext';
 
+function getFormattedTime12Hour() {
+  const today = new Date();
+  const hours = today.getHours();
+  const minutes = today.getMinutes();
+  const seconds = today.getSeconds();
+  const ampm = hours >= 12 ? '오후' : '오전';
+
+  // 시간을 12시간제로 변환하고, 2자리 숫자로 표시하도록 포맷팅
+  const formattedHours = String(hours % 12 || 12).padStart(2, '0');
+  const formattedMinutes = String(minutes).padStart(2, '0');
+
+  return `${ampm} ${formattedHours}:${formattedMinutes}`;
+}
+
 
 function Sidebar () {
 
@@ -13,6 +27,9 @@ function Sidebar () {
   const [localLastMessageContent, setLocalLastMessageContent] = useState('');
 
   const { lastMessageContent } = useLastMessageContext();
+
+  const formattedTime12Hour = getFormattedTime12Hour();
+
 
   useEffect(() => {
 
@@ -94,7 +111,7 @@ function Sidebar () {
               <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
               세종대왕
             </strong>
-            <small>Wed</small>
+            <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
           </div>
           <div className="col-10 mb-1 small">{lastMessageContent.substring(0, 25)}</div>
 
@@ -105,7 +122,7 @@ function Sidebar () {
             <div class="d-flex w-100 align-items-center justify-content-between">
               <strong class="mb-1"><img src="/img/taejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{marginRight:'10px'}}/>
               태종</strong>
-              <small class="text-muted">Tues</small>
+              <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
             </div>
             <div class="col-10 mb-1 small">안녕하세요</div>
           </a>
@@ -113,7 +130,7 @@ function Sidebar () {
             <div class="d-flex w-100 align-items-center justify-content-between">
               <strong class="mb-1"><img src="/img/yeongjo.png" alt="Bot Avatar" className="avatar" width="40px" style={{marginRight:'10px'}}/>
               영조</strong>
-              <small class="text-muted">Mon</small>
+              <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
             </div>
             <div class="col-10 mb-1 small">안녕하세요</div>
           </a>
