@@ -1,0 +1,53 @@
+.content-list {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  max-width:1150px;
+}
+
+.king-buttons button {
+  margin-right: 10px;
+}
+
+.watcha,
+.youtube {
+  flex: 1;
+  padding: 20px;
+}
+
+.horizontal-list {
+  display: flex;
+  overflow-x: auto;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.horizontal-list-item {
+  flex: 0 0 auto;
+  margin-right: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f7f7f7;
+  display: flex;
+  align-items: center;
+  min-width: 300px;
+}
+
+.horizontal-list-item img {
+  max-width: 100px;
+  margin-right: 10px;
+}
+
+.horizontal-list-item h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.horizontal-list-item small,
+.horizontal-list-item p {
+  font-size: 14px;
+  color: #777;
+  margin: 5px 0 0;
+}
