@@ -92,37 +92,15 @@
   color: black; /* Set the link color to black on hover */
 }
 
-/* 공부방 */
-.study-room {
-  background-color: #F3F2EB;
-  padding: 20px;
-  flex: 1; 
-  min-width: 300px; 
-  max-width: 500px; 
-  margin: 10px; 
-  display: inline-block;
-  border-radius: 10px;
-  width:1000px;
-  height: 370px;
-}
-
-.sejong-room, .taejo-room, .yeongjo-room {
-  background-color: #fff;
-  width: 100%;
-  height: 80px;
-  padding: 10px;
-  margin-top:20px;
-}
-
 /* 추천콘텐츠 */
 .recommended-content {
   background-color: #F3F2EB;
   flex: 1; 
   min-width: 300px; 
-  max-width: 500px; 
+  max-width: 1100px; 
   padding: 20px;
   margin: 10px; 
   display: inline-block;
   border-radius: 10px;
-  width: 1000px;
+  width: 100%;
 }

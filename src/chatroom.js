@@ -118,10 +118,21 @@ function Chatroom() {
       setQuizAnswer(answer);
       setQuizMode(true);
 
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { content: question, sender: 'bot' },
-      ]);
+      if (question === '대화를 통해 학습을 진행해 보세요.') {
+        // '대화를 통해 학습을 진행해 보세요.'인 경우에는 퀴즈 모드를 활성화하지 않음
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { content: question, sender: 'bot' },
+        ]);
+        setQuizMode(false);
+      } else {
+        setQuizMode(true);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { content: question, sender: 'bot' },
+        ]);
+      }
+
     } catch (error) {
       console.error(error);
     }
@@ -134,7 +145,6 @@ function Chatroom() {
       ...prevMessages,
       { content: quizEndMessage, sender: 'user' },
     ]);
-
 
     setQuizMode(false);
     setSelectedAnswer(null); // 퀴즈 종료 시 사용자의 정답 초기화

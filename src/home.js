@@ -44,23 +44,6 @@ function Home() {
       </div>
 
 
-      <div className="home-container">
-        {/* 공부방  */}
-        <div className="study-room">
-        <h5>공부방</h5> 
-          <div className="sejong-room">
-          <Link to="/sejongroom" className="link-black">
-          <h5>세종대왕</h5>
-          </Link>
-          </div>
-          <div className="taejo-room">
-            <h5> 태종 </h5>
-          </div>
-          <div className="yeongjo-room">
-            <h5> 영조 </h5>
-          </div>
-        </div>
-
         {/* 추천 콘텐츠 */}
         <div className="recommended-content">
           <div className="content-header">
@@ -72,7 +55,6 @@ function Home() {
         </div>
         
       </div>
-    </div>
   );
 }
 
