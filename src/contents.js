@@ -83,19 +83,19 @@ const ContentList = () => {
       </div>
       <div className='youtube'>
         <h3>유튜브 콘텐츠</h3>
-        <ul className='horizontal-list'>
+        <ul className='vertical-list'>
           {youtubeContents.map((content, index) => (
-            <li key={index} className='horizontal-list-item'>
-              <a href={content.url} target='_blank' rel='noopener noreferrer'>
-                <img
+            <li key={index} className='vertical-list-item'>
+              <img
                   src={content.thumbnail}
                   alt={content.title}
                   width='150px'
                   style={{ marginRight: '10px' }}
                 />
-              </a>
               <div style={{ display: 'inline-block' }}>
+              <a href={content.url} target='_blank' rel='noopener noreferrer'>
                 <h3>{content.title}</h3>
+              </a>
                 <p>{content.channelName}</p>
               </div>
             </li>

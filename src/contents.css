@@ -15,6 +15,7 @@
   padding: 20px;
 }
 
+/* 왓챠 */
 .horizontal-list {
   display: flex;
   overflow-x: auto;
@@ -50,4 +51,54 @@
   font-size: 14px;
   color: #777;
   margin: 5px 0 0;
+}
+
+
+/* 유튜브 */
+.vertical-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vertical-list-item {
+  flex: 0 0 auto;
+  margin-right: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f7f7f7;
+  display: flex;
+  align-items: center;
+  min-width: 300px;
+}
+
+.vertical-list-item img {
+  max-width: 100px;
+  margin-right: 10px;
+}
+
+.vertical-list-item h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.vertical-list-item small,
+.vertical-list-item p {
+  font-size: 14px;
+  color: #777;
+  margin: 5px 0 0;
+}
+
+.vertical-list-item a {
+  color: #333; /* Change the link color to your desired color */
+  text-decoration: none;
+}
+
+.vertical-list-item a:hover {
+  text-decoration: underline;
+  color: #333;
 }
