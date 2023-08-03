@@ -56,22 +56,20 @@ const ContentList = () => {
 
   return (
     <div className='content-list'>
-
-
-<div className='king-buttons'>
-      {kings.map((king) => (
-        <button
-          key={king}
-          onClick={() => setSelectedKing(king)}
-          style={{
-            backgroundColor: selectedKing === king ? '#442F11' : 'white', // Change background color if selected
-            color: selectedKing === king ? 'white' : 'black', // Change text color if selected
-          }}
-        >
-          {king}
-        </button>
-      ))}
-
+      <div className='king-buttons'>
+        {kings.map((king) => (
+          <button
+            key={king}
+            onClick={() => setSelectedKing(king)}
+            style={{
+              backgroundColor: selectedKing === king ? '#442F11' : '#E7E2D7' ,
+              color: selectedKing === king ?  'white' :'black',
+              border: selectedKing === king ? '1px solid #442F11' : '1px solid #E7E2D7',
+            }}
+          >
+            {king}
+          </button>
+        ))}
       </div>
       <div className='selected-king'>
         {selectedKing ? (
