@@ -27,6 +27,16 @@
   margin-top: 10px;
 }
 
+
+/* 로딩 메시지 디자인
+.loading-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+} */
+
+
 /* 유튜브, 왓챠 컨텐츠 전체 디자인 */
 .watcha, .youtube{
   flex: 1;
