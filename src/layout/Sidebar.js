@@ -89,21 +89,21 @@ function Sidebar () {
             </svg>
           </a>
         </div>
+
         {/* 사용자 */}
-      
         <svg xmlns="http://www.w3.org/2000/svg" width="80" height="30" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16" style={ { marginTop : '10px', marginLeft : '85px'} }>
         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
         </svg>
         
         <div className='user'> {userEmail ? `${userEmail}` : '사용자'} </div>
         
-        {/* 채팅 목록 부분 */}
+        {/* 대화 목록 부분 */}
         <span class="fs-5 fw-semibold" style={ { marginTop : '90px' } }>
-        채팅 목록
+        대화 목록
         </span>
 
         {/* 채팅 list group */}
-        {/* 세종대왕 채팅 목록  */}
+        {/* 세종대왕 대화 목록  */}
       <div class="list-group list-group-flush border-bottom">
         <a href="http://localhost:3000/chatroom" class="list-group-item list-group-item-action py-3 lh-tight">
           <div class="d-flex w-100 align-items-center justify-content-between">

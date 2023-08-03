@@ -47,7 +47,6 @@ function Login() {
                 placeholder="Email"
                 value={email}
                 onChange={handleChange}
-               
               />
             </Col>
           </Form.Group>

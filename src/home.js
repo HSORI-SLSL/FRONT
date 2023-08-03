@@ -47,13 +47,22 @@ function Home() {
         {/* 추천 콘텐츠 */}
         <div className="recommended-content">
           <div className="content-header">
-          <Link to="/contents" className="link-black">
-          <h5>추천콘텐츠</h5>
-          </Link>
+            <h5>추천콘텐츠</h5>
+            {/* 추천 창작물? */}
           </div>
-          <img src="/img/abc.png" alt="Bot Avatar" className="avatar" width="250px" height="300px" />
+          <div className="content">
+            <div className="move-to-contents">
+              <h3>세종대왕에 대해 더 알고싶으시다구요?</h3>
+              <h5>세종대왕과 관련된 영화, 드라마, 도서, 유튜브를 통해 더 많은 지식을 얻어 가세요!</h5>
+              <Link to="/contents" className="link-black">
+                <button className="btn btn-primary">추천콘텐츠로 이동</button>
+              </Link>
+            </div>
+            <div className="image">
+            <img src="/img/abc.png" alt="Bot Avatar" className="avatar" width="250px" height="300px" />
+            </div>
+          </div>
         </div>
-        
       </div>
   );
 }

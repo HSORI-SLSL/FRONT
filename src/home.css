@@ -23,6 +23,9 @@
   border-radius: 10px;
 }
 
+.person-info h5{
+  font-weight: bold;
+}
 
 .person-info2 {
   background-color: #F3F2EB;
@@ -93,7 +96,7 @@
   color: black; /* Set the link color to black on hover */
 }
 
-/* 추천콘텐츠 */
+/* 추천콘텐츠 전체*/
 .recommended-content {
   background-color: #F3F2EB;
   flex: 1; 
@@ -103,5 +106,54 @@
   margin: 10px; 
   display: inline-block;
   border-radius: 10px;
-  width: 100%;
+  width: 100%; 
+  align-items: center;
+}
+
+.recommended-content h5{
+  font-weight: bold;
+}
+
+/* 이미지, 상세설명 부분 */
+.content {
+  display: flex; 
+}
+
+/* 추천콘텐츠 이미지 */
+.recommended-content .image{
+  flex: 0.8; /* 추가: 이미지 부분이 확장될 수 있도록 설정 */
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px; 
+}
+
+/* 추천콘텐츠 상세 설명 */
+.move-to-contents {
+  flex: 1; /* 추가: move-to-contents 부분도 확장될 수 있도록 설정 */
+  display: flex;
+  flex-direction: column; /* 수정: 세로로 요소들을 배치 */
+  align-items: flex-start; /* 추가: 왼쪽 정렬 */
+  margin-top: 50px;
+  margin-left : 20px;
+}
+
+.move-to-contents h5{
+  color: #5e5d5d;
+}
+
+/* 추천콘텐츠 이동 버튼 */
+.move-to-contents .btn-primary {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #442F11;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top:40px;
+}
+
+.move-to-contents .btn-primary:hover {
+  background-color: #D7CABF;
 }
