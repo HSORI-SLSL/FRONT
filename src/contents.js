@@ -8,6 +8,9 @@ const ContentList = () => {
   const [selectedKing, setSelectedKing] = useState(''); // Initialize with empty string
   const [isLoading, setIsLoading] = useState(false); // Initialize with false
 
+  const kings = ['세종대왕', '태종', '영조'];
+
+
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true); // Set loading to true before fetching data
@@ -53,10 +56,22 @@ const ContentList = () => {
 
   return (
     <div className='content-list'>
-      <div className='king-buttons'>
-        <button onClick={() => setSelectedKing('세종대왕')}>세종대왕</button>
-        <button onClick={() => setSelectedKing('태종')}>태종</button>
-        <button onClick={() => setSelectedKing('영조')}>영조</button>
+
+
+<div className='king-buttons'>
+      {kings.map((king) => (
+        <button
+          key={king}
+          onClick={() => setSelectedKing(king)}
+          style={{
+            backgroundColor: selectedKing === king ? '#442F11' : 'white', // Change background color if selected
+            color: selectedKing === king ? 'white' : 'black', // Change text color if selected
+          }}
+        >
+          {king}
+        </button>
+      ))}
+
       </div>
       <div className='selected-king'>
         {selectedKing ? (

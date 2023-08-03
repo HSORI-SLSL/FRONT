@@ -7,6 +7,7 @@
   margin-left:280px;
 }
 
+
 /* 왕 선택 버튼 */
 .king-buttons button {
   margin-right: 10px;
@@ -14,8 +15,10 @@
   color: white; /* Change to your desired text color */
   border: none;
   padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
+
+  border: 1px solid #442F11;
 }
 
 .king-buttons button:hover {
