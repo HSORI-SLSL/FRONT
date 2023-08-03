@@ -3,16 +3,41 @@
   flex-direction: column;
   margin: 20px;
   max-width:1150px;
+  overflow: hidden;
+  margin-left:280px;
 }
 
+/* 왕 선택 버튼 */
 .king-buttons button {
   margin-right: 10px;
+  background-color: #442F11; /* Change to your desired background color */
+  color: white; /* Change to your desired text color */
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.watcha,
-.youtube {
+.king-buttons button:hover {
+  background-color: #E7E2D7;
+  /* background-color: #D7CABF */
+}
+
+.selected-king h2{
+  margin-top: 10px;
+}
+
+/* 유튜브, 왓챠 컨텐츠 전체 디자인 */
+.watcha, .youtube{
   flex: 1;
   padding: 20px;
+}
+
+.watcha h4{
+  font-weight: bold;
+}
+.youtube h4{
+  font-weight: bold;
 }
 
 /* 왓챠 */

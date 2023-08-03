@@ -12,7 +12,7 @@ const ContentList = () => {
       if (selectedKing) {
         try {
           const responseWatcha = await axios.post(
-            'https://0218-1-231-206-74.ngrok-free.app/query/CRAWL',
+            'https://6f7c-1-231-206-74.ngrok-free.app/query/CRAWL',
             {
               query: selectedKing,
             },
@@ -22,7 +22,7 @@ const ContentList = () => {
           );
 
           const responseYoutube = await axios.post(
-            'https://0218-1-231-206-74.ngrok-free.app/query/CRAWLY',
+            'https://6f7c-1-231-206-74.ngrok-free.app/query/CRAWLY',
             {
               query: selectedKing,
             },
@@ -49,7 +49,8 @@ const ContentList = () => {
   return (
     <div className='content-list'>
       <div className='king-buttons'>
-        <button onClick={() => setSelectedKing('세종대왕')}>세종대왕</button>
+        <button onClick={() => setSelectedKing('세종대왕')}>세종대왕
+        </button>
         <button onClick={() => setSelectedKing('태종')}>태종</button>
         <button onClick={() => setSelectedKing('영조')}>영조</button>
       </div>
@@ -61,7 +62,7 @@ const ContentList = () => {
         )}
       </div>
       <div className='watcha'>
-        <h3>왓챠 콘텐츠</h3>
+        <h4>왓챠 콘텐츠</h4>
         <ul className='horizontal-list'>
           {watchaContents.map((content, index) => (
             <li key={index} className='horizontal-list-item'>
@@ -82,7 +83,7 @@ const ContentList = () => {
         </ul>
       </div>
       <div className='youtube'>
-        <h3>유튜브 콘텐츠</h3>
+        <h4>유튜브 콘텐츠</h4>
         <ul className='vertical-list'>
           {youtubeContents.map((content, index) => (
             <li key={index} className='vertical-list-item'>

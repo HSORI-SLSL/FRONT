@@ -1,5 +1,6 @@
 .Sidebar{
   text-align: center;
+  position: fixed;
 }
 
 body {

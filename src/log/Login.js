@@ -72,9 +72,14 @@ function Login() {
           </div>
         </Form>
 
-        <p className="mt-3 text-end">
-          <Link to="/signup">회원가입</Link>
-        </p>
+        <div className="mt-3 text-end d-flex justify-end">
+          <p className="ml-auto">
+            <Link to="/signup" style={{ color: '#333'}}>회원가입</Link>
+            <span className="mx-2">|</span>
+            <Link to="/"  style={{ color: '#333' }}>홈화면</Link>
+          </p>
+        </div>
+
       </Container>
     </div>
   );
