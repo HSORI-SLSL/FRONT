@@ -20,6 +20,7 @@ function App() {
     <Routes>
         <Route path="/" element={<WithSidebar component={Home} />} />
         <Route path="/chatroom" element={<WithSidebar component={ChatRoom} />} />
+        {/* <Route path="/chatroom" element={<ChatRoom/>} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/land" element={<Land/>}/>

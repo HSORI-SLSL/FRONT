@@ -20,16 +20,26 @@
   align-items: center;
 }
 
+/* 대화말풍선 전체 박스 */
+.chat-messages-container{
+  position: fixed;
+  display: flex;
+  height: 40px;
+  top: 20px;
+  left: 270px;
+  width: calc(96% - 250px);
+}
+
 /* 메시지 주고받는 부분 */
 .chat-messages{
+  position:fixed;
   height: 530px;
-  margin-top: 80px;
-  padding: 10px;
+  width: calc(96% - 250px);
+  margin-top: 65px;
+  padding: 8px;
   overflow-y: scroll;
   overflow-x: hidden;
   max-height: 100vh;
-  padding: 10px;
-  margin-left: 200px;
 }
 
 /* 메시지 말풍선 */
@@ -39,7 +49,6 @@
   flex-direction: column;
   align-items: flex-end;
   padding: 10px;
-  
   
 /* position: relative;
 height: 50px;
@@ -101,6 +110,11 @@ white-space: nowrap;
 
 }
 
+.text.bot.quiz-mode {
+  background-color: #f3f3f3; /* 퀴즈 말풍선의 배경색 */
+  font-size: 16px; /* 퀴즈 말풍선의 폰트 크기 */
+  /* 추가적인 스타일 속성들을 원하는대로 설정할 수 있습니다. */
+}
 
 
 /* 퀴즈 모드에서 사용자 말풍선 색상 */

@@ -18,7 +18,7 @@ const ContentList = () => {
       if (selectedKing) {
         try {
           const responseWatcha = await axios.post(
-            'https://6f7c-1-231-206-74.ngrok-free.app/query/CRAWL',
+            'https://da9b-1-231-206-74.ngrok-free.app/query/CRAWL',
             {
               query: selectedKing,
             },
@@ -28,7 +28,7 @@ const ContentList = () => {
           );
 
           const responseYoutube = await axios.post(
-            'https://6f7c-1-231-206-74.ngrok-free.app/query/CRAWLY',
+            'https://da9b-1-231-206-74.ngrok-free.app/query/CRAWLY',
             {
               query: selectedKing,
             },
