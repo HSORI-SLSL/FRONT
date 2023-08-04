@@ -124,7 +124,7 @@ white-space: nowrap;
 
 /* 퀴즈 모드에서 봇 말풍선 색상 */
 .quiz .text.bot2 {
-  background-color: #FFDAB9; /* 피치 배경색 */
+  background-color: #524234ac; /* 피치 배경색 */
 }
 
 
@@ -144,4 +144,9 @@ white-space: nowrap;
 
 .form-control::placeholder{
   font-size: 18px; /* 원하는 글자 크기로 수정하세요 */
+}
+
+.quiz-user {
+  display: flex;
+  justify-content: flex-end; 
 }

@@ -191,12 +191,15 @@ function Chatroom() {
 
       <div className="chat-messages-container">
         <div className="chat-messages" ref={chatRef}>
-          {messages.map((msg, index) => (
-            <div className="message" key={index}>
+
+
+        {messages.map((msg, index) => (
+             <div className="message" key={index}>
               {msg.sender === 'user' ? (
                 <div className="text user">{msg.content}</div>
               ) : (
-                <div className="text bot">
+                <div className={`text bot ${quizMode && index === messages.length - 1 ? 'quiz' : ''}`}>
+       
                   <div className="avatar-container">
                     <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" />
                   </div>
@@ -207,17 +210,26 @@ function Chatroom() {
               )}
             </div>
           ))}
-          {/* o/x 버튼 */}
-          {quizMode && (
+
+           {/* o/x 버튼 */}
+           {quizMode && (
             <div className="quiz">
               <div className="quiz-bot">
-                <div className="quiz-bot2">
-                  <button type="button" class="btn btn-light" className="btn btn-o" style={{ marginLeft: '1000px', fontSize: '38px', backgroundColor: 'grey', width: '80px'}} onClick={handleCorrectButtonClick}>
+              <div className="quiz-user">
+                <button type="button" class="btn btn-light" className="btn btn-o" style={{ fontSize: '38px', backgroundColor: 'grey', width: '80px'}} onClick={handleCorrectButtonClick}>
                   <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M224 96a160 160 0 1 0 0 320 160 160 0 1 0 0-320zM448 256A224 224 0 1 1 0 256a224 224 0 1 1 448 0z"/></svg>
-                  </button>
-                  <button type="button" class="btn btn-light" className="btn btn-x" style={{ fontSize: '38px', backgroundColor: 'grey', marginLeft: '2px', width: '80px'}} onClick={handleIncorrectButtonClick}>
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>                  </button>
+                  
+                </button>
+                <button type="button" class="btn btn-light" className="btn btn-x" style={{ fontSize: '38px', backgroundColor: 'grey', marginLeft: '2px', width: '80px'}} onClick={handleIncorrectButtonClick}>
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>                       
+                </button>
+
+                
                 </div>
+
+
+
+
               </div>
             </div>
           )}
