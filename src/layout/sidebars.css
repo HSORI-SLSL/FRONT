@@ -1,6 +1,7 @@
 .Sidebar{
   text-align: center;
   position: fixed;
+  height: 100%;
 }
 
 body {
@@ -86,8 +87,3 @@ main {
 .btn-toggle-nav a:focus {
   background-color: #d2f4ea;
 }
-
-
-/* .scrollarea {
-  overflow-y: auto;
-} */
