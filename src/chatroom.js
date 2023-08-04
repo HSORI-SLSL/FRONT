@@ -235,13 +235,13 @@ function Chatroom() {
           )}
         </div>
       </div>
-
       {/* 퀴즈 종료 버튼 - 퀴즈 모드일 때만 표시 */}
       {quizMode && (
-        <button type="button" className="btn btn-chat" onClick={handleQuizEndButtonClick}>
-          퀴즈 종료
-        </button>
-      )}
+          <button type="button" className="btn btn-chat btn-quiz-end" onClick={handleQuizEndButtonClick}>
+            퀴즈 종료
+          </button>
+        )}
+
 
       <div className="chatfooter chat-input">
         <div className="input-group input-group-lg">
