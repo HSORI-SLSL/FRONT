@@ -59,7 +59,7 @@ function Home() {
               </Link>
             </div>
             <div className="image">
-            <img src="/img/ezgif.com-resize.gif" alt="Bot Avatar" className="avatar" width="300px" height="300px" />
+            <img src="/img/ezgif.com-gif-maker.gif" alt="Bot Avatar" className="avatar" width="300px" height="400px" />
             </div>
           </div>
         </div>
