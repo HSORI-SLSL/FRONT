@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './chatroom.css';
+import './yeongjo.css';
 import axios from 'axios';
 import { useLastMessageContext } from './LastMessageContext';
 
-function Chatroom() {
+function Yeongjo() {
   const [query, setQuery] = useState('');
   const [messages, setMessages] = useState([]);
   const [quizMode, setQuizMode] = useState(false);
@@ -185,7 +185,7 @@ function Chatroom() {
     <div className="chat-room container">
       <div className="chatheader chat-header-card">
         <div className="card-body d-flex justify-content-center align-items-center">
-          세종대왕
+          영조
         </div>
       </div>
 
@@ -201,7 +201,7 @@ function Chatroom() {
                 <div className={`text bot ${quizMode && index === messages.length - 1 ? 'quiz' : ''}`}>
        
                   <div className="avatar-container">
-                    <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" />
+                    <img src="/img/yeongjo.png" alt="Bot Avatar" className="avatar" width="40px" />
                   </div>
                   <div className="text bot2">
                     {msg.content}
@@ -275,4 +275,4 @@ function Chatroom() {
   );
 }
 
-export default Chatroom;
+export default Yeongjo;

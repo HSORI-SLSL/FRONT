@@ -3,6 +3,8 @@ import './App.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Sidebar from './layout/Sidebar';
 import ChatRoom from './chatroom';
+import Taejong from './taejong';
+import Yeongjo from './yeongjo';
 import Home from './home';
 import Login from './log/Login';
 import Signup from './log/Signup';
@@ -20,6 +22,8 @@ function App() {
     <Routes>
         <Route path="/" element={<WithSidebar component={Home} />} />
         <Route path="/chatroom" element={<WithSidebar component={ChatRoom} />} />
+        <Route path="/taejong" element={<WithSidebar component={Taejong} />} />
+        <Route path="/yeongjo" element={<WithSidebar component={Yeongjo} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/land" element={<Land/>}/>
