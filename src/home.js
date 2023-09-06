@@ -43,25 +43,32 @@ function Home() {
         </div>
       </div>
 
+      {/* <div className="image">
+            <img src="/img/content.png" width="1000px" height="400px"/>
+          </div> */}
 
         {/* 추천 콘텐츠 */}
         <div className="recommended-content">
-          <div className="content-header">
+          {/* <div className="content-header">
             <h5>추천콘텐츠</h5>
-            {/* 추천 창작물? */}
-          </div>
+          </div> */}
           <div className="content">
             <div className="move-to-contents">
-              <h3>세종대왕에 대해 더 알고싶으시다구요?</h3>
-              <h5>세종대왕과 관련된 영화, 드라마, 도서, 유튜브를 통해 더 많은 지식을 얻어 가세요!</h5>
+              <h2>더 많은 정보나 관련 콘텐츠를 찾고 계신가요?</h2>
+              <th></th>
+              <th></th>
+              <h5> 세종대왕, 영조, 태종의 역사와 문화를 탐험해보세요!</h5>
+              <h5> 왕에 관한 흥미로운 이야기와 관련된 콘텐츠를 발견하고 역사의 흐름을 새롭게 경험해보세요</h5>
+              {/* <h5> 역사의 흐름을 새롭게 경험해보세요</h5> */}
               <Link to="/contents" className="link-black">
                 <button className="btn btn-primary">추천콘텐츠로 이동</button>
               </Link>
+              <p>세종대왕과 관련된 영화, 드라마, 도서, 유튜브를 통해 더 많은 지식을 얻어 가세요!</p>
             </div>
             <div className="image">
             <img src="/img/ezgif.com-gif-maker.gif" alt="Bot Avatar" className="avatar" width="300px" height="400px" />
             </div>
-          </div>
+          </div> 
         </div>
       </div>
   );

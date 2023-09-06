@@ -26,9 +26,12 @@
   /* background-color: #D7CABF */
 }
 
-.selected-king h2{
+.selected-king h5{
   margin-top: 10px;
+  font-weight: bold;
+  color: #5e5d5d;
 }
+
 
 
 /* 로딩 메시지 디자인

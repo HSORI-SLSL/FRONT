@@ -75,7 +75,7 @@ const ContentList = () => {
         {selectedKing ? (
           <h2>{selectedKing}의 콘텐츠</h2>
         ) : (
-          <h2>왕을 선택하세요</h2>
+          <h5>왕을 선택하세요</h5>
         )}
       </div>
       {/* 크롤링 결과 나오기 전까지 나오는 문구 */}
