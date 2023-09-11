@@ -79,129 +79,121 @@ const ContentList = () => {
         )}
       </div>
 
-      <div className='image'>
-  <div className="im1">
-
-  <a href="https://pedia.watcha.com/ko-KR/contents/mO0g2Yx">
-    <img src="\content\sado.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px" />
-  </a>
-
-    <small className="small-text">
-      사도<br />
-      2015 • 한국<br />
-      영화
-    </small>
-  </div>
-
-  <div className="im2">
-  <a href="https://pedia.watcha.com/ko-KR/contents/mOo0wJk">
-    <img src="\content\narat.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px"/>
-  </a>
-    <small className="small-text">
-      나랏말싸미<br />
-      2018 • 한국<br />
-      영화
-    </small>
-  </div>
-
-  <div className="im2">
-    <a href="https://pedia.watcha.com/ko-KR/contents/tRX5Nem">
-    <img src="\content\bangone.png" alt="Bot Avatar" className="avatar" width="150px" height="200px"/>
+  {/* 크롤링 결과 나오기 전 영화 리스트  */}
+  <div className='image' style={{ display: selectedKing ? 'none' :'flex', flexDirection:'row'}}>
+    <div className="im1">
+    <a href="https://pedia.watcha.com/ko-KR/contents/mO0g2Yx">
+      <img src="\content\sado.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px" />
     </a>
-    <small className="small-text">
-      태조 이방원<br />
-      2021 • KBS1<br />
-      TV 프로그램
-    </small>
-  </div>
+      <small className="small-text">
+        사도  <br />
+        2015 • 한국<br />
+        영화
+      </small>
+    </div>
 
-  <div className="im2">
-  <a href="https://pedia.watcha.com/ko-KR/contents/mdjwRxl">
-    <img src="\content\chunmoon.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px" />
+    <div className="im2">
+    <a href="https://pedia.watcha.com/ko-KR/contents/mOo0wJk">
+      <img src="\content\narat.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px"/>
     </a>
-    <small className="small-text">
-      천문<br />
-      2018 • 한국<br />
-      영화
-    </small>
+      <small className="small-text">
+        나랏말싸미<br />
+        2018 • 한국<br />
+        영화
+      </small>
+    </div>
+
+    <div className="im2">
+      <a href="https://pedia.watcha.com/ko-KR/contents/tRX5Nem">
+      <img src="\content\bangone.png" alt="Bot Avatar" className="avatar" width="150px" height="200px"/>
+      </a>
+      <small className="small-text">
+        태조 이방원<br />
+        2021 • KBS1<br />
+        TV 프로그램
+      </small>
+    </div>
+
+    <div className="im2">
+    <a href="https://pedia.watcha.com/ko-KR/contents/mdjwRxl">
+      <img src="\content\chunmoon.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px" />
+      </a>
+      <small className="small-text">
+        천문<br />
+        2018 • 한국<br />
+        영화
+      </small>
+    </div>
+
+    <div className="im2">
+    <a href="https://pedia.watcha.com/ko-KR/contents/tPVmwxR">
+      <img src="\content\isan.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px" />
+      </a>
+      <small className="small-text">
+        이산<br />
+        2017 • MBC<br />
+        TV 프로그램
+      </small>
+    </div>
   </div>
 
-  <div className="im2">
-  <a href="https://pedia.watcha.com/ko-KR/contents/tPVmwxR">
-    <img src="\content\isan.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px" />
-    </a>
-    <small className="small-text">
-      이산<br />
-      2017 • MBC<br />
-      TV 프로그램
-    </small>
+  {/* 크롤링 결과 나오기 전 도서 리스트 */}
+  <div className='image2' style={{ display: selectedKing ? 'none' :'flex', flexDirection:'row' }}>
+    <div className="im11">
+    <a href="https://product.kyobobook.co.kr/detail/S000000777369">
+      <img src="\content\sejongbook1.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px" />
+      </a>
+      <small className="small-text">
+        세종대왕<br />
+        2008 • 조정래<br />
+        책
+      </small>
+    </div>
+
+    <div className="im22">
+    <a href="https://product.kyobobook.co.kr/detail/S000000403030">
+      <img src="\content\sejongbook2.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px"/>
+      </a>
+      <small className="small-text">
+      한권으로 읽는 세종대왕실록<br />
+        2008 • 박영규<br />
+        책
+      </small>
+    </div>
+
+    <div className="im22">
+    <a href="https://product.kyobobook.co.kr/detail/S000001283711">
+        <img src="\content\taejongbook1.png" alt="Bot Avatar" className="avatar" width="150px" height="200px"/>
+      </a>
+      <small className="small-text">
+        태종 이방원<br />
+        2016 • 방기환<br />
+        책
+      </small>
+    </div>
+
+    <div className="im22">
+    <a href="https://product.kyobobook.co.kr/detail/S000001136610">
+        <img src="\content\taejongbook2.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px" />
+      </a>
+      <small className="small-text">
+        태종 조선의 길을 열다<br />
+        2005 • 이한우<br />
+        책
+      </small>
+    </div>
+
+    <div className="im22">
+    <a href="https://product.kyobobook.co.kr/detail/S000000864797">
+      <img src="\content\yeongjobook1.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px" />
+      </a>
+      <small className="small-text"> 
+  두 리더 : 영조 그리고 정조<br />
+        2020 • 노혜경<br />
+        책
+      </small>
+    </div>
   </div>
-</div>
-
-
-<div className='image2'>
-  <div className="im11">
-  <a href="https://product.kyobobook.co.kr/detail/S000000777369">
-    <img src="\content\sejongbook1.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px" />
-    </a>
-    <small className="small-text">
-      세종대왕<br />
-      2008 • 조정래<br />
-      책
-    </small>
-  </div>
-
-  <div className="im22">
-  <a href="https://product.kyobobook.co.kr/detail/S000000403030">
-    <img src="\content\sejongbook2.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px"/>
-    </a>
-    <small className="small-text">
-    한권으로 읽는 세종대왕실록<br />
-      2008 • 박영규<br />
-      책
-    </small>
-  </div>
-
-  <div className="im22">
-  <a href="https://product.kyobobook.co.kr/detail/S000001283711">
-      <img src="\content\taejongbook1.png" alt="Bot Avatar" className="avatar" width="150px" height="200px"/>
-    </a>
-    <small className="small-text">
-      태종 이방원<br />
-      2016 • 방기환<br />
-      책
-    </small>
-  </div>
-
- 
-  <div className="im22">
-  <a href="https://product.kyobobook.co.kr/detail/S000001136610">
-      <img src="\content\taejongbook2.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px" />
-    </a>
-    <small className="small-text">
-      태종 조선의 길을 열다<br />
-      2005 • 이한우<br />
-      책
-    </small>
-  </div>
-
-  <div className="im22">
-  <a href="https://product.kyobobook.co.kr/detail/S000000864797">
-    <img src="\content\yeongjobook1.png" alt="Bot Avatar" className="avatar"  width="150px" height="200px" />
-    </a>
-    <small className="small-text"> 
-두 리더 : 영조 그리고 정조<br />
-      2020 • 노혜경<br />
-      책
-    </small>
-  </div>
-</div>
-
-      
-
- 
-
-
 
       {/* 크롤링 결과 나오기 전까지 나오는 문구 */}
       {isLoading ? ( 
