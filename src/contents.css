@@ -143,3 +143,32 @@
   text-decoration: underline;
   color: #333;
 }
+
+.image {
+  display: flex;
+  flex-wrap: wrap; /* 이미지와 텍스트를 랩핑하여 나란히 표시 */
+  margin-top: 30px;
+}
+
+.im1, 
+.im11,
+.im2,
+.im22 {
+  display: flex;
+  flex-direction: column; /* 이미지 밑에 텍스트를 세로로 정렬 */
+  margin-left: 50px;
+}
+
+
+.small-text {
+  font-size: 14px;
+  color: #777;
+  margin: 5px 0 0;
+}
+
+.image2 {
+  display: flex;
+  flex-wrap: wrap; /* 이미지와 텍스트를 랩핑하여 나란히 표시 */
+  margin-top: 40px;
+}
+
