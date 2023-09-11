@@ -147,7 +147,7 @@
 .image {
   display: flex;
   flex-wrap: wrap; /* 이미지와 텍스트를 랩핑하여 나란히 표시 */
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .im1, 

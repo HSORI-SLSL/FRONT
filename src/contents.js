@@ -10,6 +10,14 @@ const ContentList = () => {
 
   const kings = ['세종대왕', '태종', '영조'];
 
+  // Toggle the selected king when the button is clicked
+  const toggleSelectedKing = (king) => {
+    if (selectedKing === king) {
+      setSelectedKing(''); // If the same king is clicked again, clear the selection
+    } else {
+      setSelectedKing(king); // Otherwise, set the selected king
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,7 +68,7 @@ const ContentList = () => {
         {kings.map((king) => (
           <button
             key={king}
-            onClick={() => setSelectedKing(king)}
+            onClick={() => toggleSelectedKing(king)}
             style={{
               backgroundColor: selectedKing === king ? '#442F11' : '#E7E2D7' ,
               color: selectedKing === king ?  'white' :'black',
