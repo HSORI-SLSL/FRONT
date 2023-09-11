@@ -78,6 +78,8 @@ const ContentList = () => {
           <h5>왕을 선택하세요</h5>
         )}
       </div>
+
+
       {/* 크롤링 결과 나오기 전까지 나오는 문구 */}
       {isLoading ? ( 
         <div className='loading-message'>잠시만 기다려주세요...</div>
