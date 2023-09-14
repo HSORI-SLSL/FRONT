@@ -3,6 +3,11 @@ import './chatroom.css';
 import axios from 'axios';
 import { useLastMessageContext } from './LastMessageContext';
 
+
+function saveChatHistory(messages) {
+  localStorage.setItem('chatHistory', JSON.stringify(messages));
+}
+
 function Chatroom() {
   const [query, setQuery] = useState('');
   const [messages, setMessages] = useState([]);
@@ -16,7 +21,6 @@ function Chatroom() {
     setQuery(event.target.value);
   };
 
-  // 메시지 보내고 답 받아오기
   const sendMessage = async (message) => {
     try {
       setMessages((prevMessages) => [
@@ -24,7 +28,7 @@ function Chatroom() {
         { content: '...', sender: 'bot', isTyping: true },
       ]);
 
-      const response = await axios.post('https://da9b-1-231-206-74.ngrok-free.app/query/NORMAL', {
+      const response = await axios.post('https://4c0b-1-231-206-74.ngrok-free.app/query/NORMAL', {
         query: message,
       });
       const data = response.data;
@@ -38,7 +42,6 @@ function Chatroom() {
       return answer;
     } catch (error) {
       console.error(error);
-      // 오류가 났을때
       return '오류';
     }
   };
@@ -47,28 +50,51 @@ function Chatroom() {
     e.preventDefault();
     if (query.trim() !== '') {
       const userMessage = query.trim();
+      const userMessageObject = { content: userMessage, sender: 'user' };
+
+      // 새로운 메시지를 추가하여 대화 기록 업데이트
       setMessages((prevMessages) => [
         ...prevMessages,
-        { content: userMessage, sender: 'user' },
+        userMessageObject,
       ]);
+
+      // 로컬 스토리지에서 이전 대화 기록을 불러옴
+      const savedChatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+      
+      // 새로운 메시지를 대화 기록에 추가하고 로컬 스토리지에 저장
+      const updatedChatHistory = [...savedChatHistory, userMessageObject];
+      localStorage.setItem('chatHistory', JSON.stringify(updatedChatHistory));
 
       setQuery('');
 
       const botResponse = await sendMessage(userMessage);
 
+      const botResponseObject = { content: botResponse, sender: 'bot' };
+
+      // 새로운 봇의 응답을 추가하여 대화 기록 업데이트
       setMessages((prevMessages) => [
-        ...prevMessages.slice(0, -1),
-        { content: botResponse, sender: 'bot' },
+        ...prevMessages,
+        botResponseObject,
       ]);
+
+      // 로컬 스토리지에서 이전 대화 기록을 불러온 다음 새로운 봇의 응답을 추가하고 저장
+      const updatedChatHistoryWithBot = [...updatedChatHistory, botResponseObject];
+      localStorage.setItem('chatHistory', JSON.stringify(updatedChatHistoryWithBot));
     }
   };
 
-  // 엔터키로 보내기
+  // 로컬 스토리지에서 채팅 기록을 초기화하는 함수
+  const handleClearChatHistory = () => {
+    localStorage.removeItem('chatHistory');
+    setMessages([]); // 채팅창에서도 기록을 초기화
+  };
+
   const enterKeyEventHandler = (e) => {
     if (e.key === 'Enter') {
       handleMessageSubmit(e);
     }
   };
+
 
   const chatRef = useRef(null);
   const initialGreetingDisplayed = useRef(false);
@@ -78,7 +104,6 @@ function Chatroom() {
       setLastMessageContent(messages[messages.length - 1].content);
     }
 
-    // 첫인사
     if (!initialGreetingDisplayed.current) {
       const initialGreeting = '안녕하신가!';
       setMessages((prevMessages) => [
@@ -98,7 +123,6 @@ function Chatroom() {
     chatRef.current.scrollTop = chatRef.current.scrollHeight;
   };
 
-  // 퀴즈
   const handleQuizButtonClick = async () => {
     const quizMessage = '퀴즈를 시작합니다.';
     setMessages((prevMessages) => [
@@ -107,7 +131,7 @@ function Chatroom() {
     ]);
 
     try {
-      const response = await axios.post('https://da9b-1-231-206-74.ngrok-free.app/query/QUIZ', {
+      const response = await axios.post('https://4c0b-1-231-206-74.ngrok-free.app/query/QUIZ', {
         BotType: 'QUIZ',
       });
       const data = response.data;
@@ -119,7 +143,6 @@ function Chatroom() {
       setQuizMode(true);
 
       if (question === '대화를 통해 학습을 진행해 보세요.') {
-        // '대화를 통해 학습을 진행해 보세요.'인 경우에는 퀴즈 모드를 활성화하지 않음
         setMessages((prevMessages) => [
           ...prevMessages,
           { content: question, sender: 'bot' },
@@ -132,13 +155,11 @@ function Chatroom() {
           { content: question, sender: 'bot' },
         ]);
       }
-
     } catch (error) {
       console.error(error);
     }
   };
 
-  // 퀴즈 종료 버튼 누르면 실행되는 것
   const handleQuizEndButtonClick = () => {
     const quizEndMessage = '퀴즈를 종료합니다.';
     setMessages((prevMessages) => [
@@ -147,10 +168,9 @@ function Chatroom() {
     ]);
 
     setQuizMode(false);
-    setSelectedAnswer(null); // 퀴즈 종료 시 사용자의 정답 초기화
+    setSelectedAnswer(null);
   };
 
-  // o/x 버튼 누를 시
   const handleAnswerButtonClick = (isCorrect) => {
     if (isCorrect) {
       const correctMessage = '정답이다!';
@@ -171,15 +191,22 @@ function Chatroom() {
     setQuizMode(false);
   };
 
-  // o 버튼 클릭
   const handleCorrectButtonClick = () => {
     handleAnswerButtonClick(true);
   };
 
-  // x 버튼 클릭
   const handleIncorrectButtonClick = () => {
     handleAnswerButtonClick(false);
   };
+
+  useEffect(() => {
+    scrollToBottom();
+    // 컴포넌트가 마운트될 때 로컬 스토리지에서 대화 기록을 불러옴
+    const savedChatHistory = localStorage.getItem('chatHistory');
+    if (savedChatHistory) {
+      setMessages(JSON.parse(savedChatHistory));
+    }
+  }, []);
 
   return (
     <div className="chat-room container">
@@ -189,17 +216,16 @@ function Chatroom() {
         </div>
       </div>
 
+      
+
       <div className="chat-messages-container">
         <div className="chat-messages" ref={chatRef}>
-
-
         {messages.map((msg, index) => (
-             <div className="message" key={index}>
+            <div className="message" key={index}>
               {msg.sender === 'user' ? (
                 <div className="text user">{msg.content}</div>
               ) : (
                 <div className={`text bot ${quizMode && index === messages.length - 1 ? 'quiz' : ''}`}>
-       
                   <div className="avatar-container">
                     <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" />
                   </div>
@@ -212,7 +238,7 @@ function Chatroom() {
           ))}
 
            {/* o/x 버튼 */}
-           {quizMode && (
+          {quizMode && (
             <div className="quiz">
               <div className="quiz-bot">
               <div className="quiz-user">
@@ -223,13 +249,7 @@ function Chatroom() {
                 <button type="button" class="btn btn-light" className="btn btn-x" style={{ fontSize: '38px', backgroundColor: 'grey', marginLeft: '2px', width: '80px'}} onClick={handleIncorrectButtonClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>                       
                 </button>
-
-                
                 </div>
-
-
-
-
               </div>
             </div>
           )}
@@ -268,6 +288,13 @@ function Chatroom() {
             onClick={handleMessageSubmit}
           >
             전송
+          </button>
+          <button
+            type="button"
+            className="btn btn-chat"
+            onClick={handleClearChatHistory}
+          >
+            초기화
           </button>
         </div>
       </div>

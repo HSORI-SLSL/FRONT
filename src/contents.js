@@ -26,7 +26,7 @@ const ContentList = () => {
       if (selectedKing) {
         try {
           const responseBooks = await axios.post(
-            'https://da9b-1-231-206-74.ngrok-free.app/query/CRAWL',
+            'https://4c0b-1-231-206-74.ngrok-free.app/query/CRAWL',
             {
               query: selectedKing,
             },
@@ -36,7 +36,7 @@ const ContentList = () => {
           );
 
           const responseYoutube = await axios.post(
-            'https://da9b-1-231-206-74.ngrok-free.app/query/CRAWLY',
+            'https://4c0b-1-231-206-74.ngrok-free.app/query/CRAWLY',
             {
               query: selectedKing,
             },
@@ -213,13 +213,13 @@ const ContentList = () => {
           {selectedKing && ( 
             <div>
               <div className='books'>
-                <h4>구글북스 콘텐츠</h4>
+                <h4>도서 콘텐츠</h4>
                 <ul className='horizontal-list'>
                   {booksContents.map((content, index) => (
                     <li key={index} className='horizontal-list-item'>
                       <a href={content.href} target='_blank' rel='noopener noreferrer'>
                         <img
-                          src={content.thumbnail_info.img_link}
+                          src={content.thumbnail}
                           alt={content.title}
                           width='150px'
                           style={{ marginRight: '10px' }}
@@ -227,7 +227,9 @@ const ContentList = () => {
                       </a>
                       <div style={{ display: 'inline-block' }}>
                         <h3>{content.title}</h3>
-                        <small>작가: {content.authors.join(',')}</small>
+                        <small>작가: {Array.isArray(content.authors) ? content.authors.map((author, authorIndex) => (
+                          <span key={authorIndex}>{author}{authorIndex < content.authors.length - 1 ? ', ' : ''}</span>
+                        )) : content.authors}</small>
                       </div>
                     </li>
                   ))}
