@@ -43,20 +43,20 @@
 } */
 
 
-/* 유튜브, 왓챠 컨텐츠 전체 디자인 */
-.watcha, .youtube{
+/* 유튜브, 구글북스 컨텐츠 전체 디자인 */
+.books, .youtube{
   flex: 1;
   padding: 20px;
 }
 
-.watcha h4{
+.books h4{
   font-weight: bold;
 }
 .youtube h4{
   font-weight: bold;
 }
 
-/* 왓챠 */
+/* 구글북스 */
 .horizontal-list {
   display: flex;
   overflow-x: auto;

@@ -3,7 +3,7 @@ import axios from 'axios';
 import './contents.css';
 
 const ContentList = () => {
-  const [watchaContents, setWatchaContents] = useState([]);
+  const [booksContents, setBooksContents] = useState([]);
   const [youtubeContents, setYoutubeContents] = useState([]);
   const [selectedKing, setSelectedKing] = useState(''); // Initialize with empty string
   const [isLoading, setIsLoading] = useState(false); // Initialize with false
@@ -25,7 +25,7 @@ const ContentList = () => {
 
       if (selectedKing) {
         try {
-          const responseWatcha = await axios.post(
+          const responseBooks = await axios.post(
             'https://da9b-1-231-206-74.ngrok-free.app/query/CRAWL',
             {
               query: selectedKing,
@@ -45,14 +45,14 @@ const ContentList = () => {
             }
           );
 
-          setWatchaContents(responseWatcha.data.contents);
+          setBooksContents(responseBooks.data.contents);
           setYoutubeContents(responseYoutube.data.contents);
         } catch (error) {
           console.error('Error fetching contents from backend:', error);
         }
       } else {
         // Clear contents if no king is selected
-        setWatchaContents([]);
+        setBooksContents([]);
         setYoutubeContents([]);
       }
 
@@ -212,14 +212,14 @@ const ContentList = () => {
           {/* 왕 선택하면 나오는 크롤링 결과 */}
           {selectedKing && ( 
             <div>
-              <div className='watcha'>
-                <h4>왓챠 콘텐츠</h4>
+              <div className='books'>
+                <h4>구글북스 콘텐츠</h4>
                 <ul className='horizontal-list'>
-                  {watchaContents.map((content, index) => (
+                  {booksContents.map((content, index) => (
                     <li key={index} className='horizontal-list-item'>
                       <a href={content.href} target='_blank' rel='noopener noreferrer'>
                         <img
-                          src={content.img_urls}
+                          src={content.thumbnail_info.img_link}
                           alt={content.title}
                           width='150px'
                           style={{ marginRight: '10px' }}
@@ -227,7 +227,7 @@ const ContentList = () => {
                       </a>
                       <div style={{ display: 'inline-block' }}>
                         <h3>{content.title}</h3>
-                        <small>{content.info}</small>
+                        <small>작가: {content.authors.join(',')}</small>
                       </div>
                     </li>
                   ))}
