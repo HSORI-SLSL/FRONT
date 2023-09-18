@@ -68,9 +68,16 @@ function Chatroom() {
   };
 
   // 로컬 스토리지에서 채팅 기록을 초기화하는 함수
-  const handleClearChatHistory = () => {
-    localStorage.removeItem('chatHistory');
+  const handleClearChatHistory = async () => {
+
     setMessages([]); // 채팅창에서도 기록을 초기화
+    localStorage.removeItem('chatHistory');
+
+      // "안녕하신가!" 메시지 추가
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { content: '안녕하신가!', sender: 'bot' },
+    ]);
   };
 
   const enterKeyEventHandler = (e) => {
