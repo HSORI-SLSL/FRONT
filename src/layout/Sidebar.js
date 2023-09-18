@@ -119,15 +119,15 @@ function Sidebar () {
 
 
         <a href="http://localhost:3000/taejong" class="list-group-item list-group-item-action py-3 lh-tight">
-          <div class="d-flex w-100 align-items-center justify-content-between">
-            <strong class="mb-1" margin="30px">
-              <img src="/img/taejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
-              태종
-            </strong>
-            <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
-          </div>
-          <div className="col-10 mb-1 small">{lastMessageContent.substring(0, 25)}</div>
-
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              <strong class="mb-1" margin="30px">
+                <img src="/img/taejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
+                태종
+              </strong>
+              <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
+            </div>
+            <div className="col-10 mb-1 small">안녕하신가</div> 
+            {/* <div className="col-10 mb-1 small">{lastMessageContent.substring(0, 25)}</div> */}
         </a>
 
         <a href="http://localhost:3000/yeongjo" class="list-group-item list-group-item-action py-3 lh-tight">
@@ -138,7 +138,8 @@ function Sidebar () {
             </strong>
             <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
           </div>
-          <div className="col-10 mb-1 small">{lastMessageContent.substring(0, 25)}</div>
+          <div className="col-10 mb-1 small">안녕하신가</div> 
+          {/* <div className="col-10 mb-1 small">{lastMessageContent.substring(0, 25)}</div> */}
 
         </a>
       </div>

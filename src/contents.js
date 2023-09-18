@@ -26,7 +26,7 @@ const ContentList = () => {
       if (selectedKing) {
         try {
           const responseBooks = await axios.post(
-            'https://4c0b-1-231-206-74.ngrok-free.app/query/CRAWL',
+            'https://ab96-1-231-206-74.ngrok-free.app/query/CRAWL',
             {
               query: selectedKing,
             },
@@ -36,7 +36,7 @@ const ContentList = () => {
           );
 
           const responseYoutube = await axios.post(
-            'https://4c0b-1-231-206-74.ngrok-free.app/query/CRAWLY',
+            'https://ab96-1-231-206-74.ngrok-free.app/query/CRAWLY',
             {
               query: selectedKing,
             },
@@ -212,7 +212,7 @@ const ContentList = () => {
           {/* 왕 선택하면 나오는 크롤링 결과 */}
           {selectedKing && ( 
             <div>
-              <div className='books'>
+              {/* <div className='books'>
                 <h4>도서 콘텐츠</h4>
                 <ul className='horizontal-list'>
                   {booksContents.map((content, index) => (
@@ -234,7 +234,7 @@ const ContentList = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </div> */}
               <div className='youtube'>
                 <h4>유튜브 콘텐츠</h4>
                 <ul className='vertical-list'>
@@ -251,6 +251,29 @@ const ContentList = () => {
                         <h3>{content.title}</h3>
                       </a>
                         <p>{content.channelName}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className='books'>
+                <h4>도서 콘텐츠</h4>
+                <ul className='horizontal-list'>
+                  {booksContents.map((content, index) => (
+                    <li key={index} className='horizontal-list-item'>
+                      <a href={content.href} target='_blank' rel='noopener noreferrer'>
+                        <img
+                          src={content.thumbnail}
+                          alt={content.title}
+                          width='150px'
+                          style={{ marginRight: '10px' }}
+                        />
+                      </a>
+                      <div style={{ display: 'inline-block' }}>
+                        <h3>{content.title}</h3>
+                        <small>작가: {Array.isArray(content.authors) ? content.authors.map((author, authorIndex) => (
+                          <span key={authorIndex}>{author}{authorIndex < content.authors.length - 1 ? ', ' : ''}</span>
+                        )) : content.authors}</small>
                       </div>
                     </li>
                   ))}

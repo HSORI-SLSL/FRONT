@@ -3,7 +3,6 @@ import './chatroom.css';
 import axios from 'axios';
 import { useLastMessageContext } from './LastMessageContext';
 
-
 function saveChatHistory(messages) {
   localStorage.setItem('chatHistory', JSON.stringify(messages));
 }
@@ -28,12 +27,13 @@ function Chatroom() {
         { content: '...', sender: 'bot', isTyping: true },
       ]);
 
-      const response = await axios.post('https://4c0b-1-231-206-74.ngrok-free.app/query/NORMAL', {
+      const response = await axios.post('https://ab96-1-231-206-74.ngrok-free.app/query/NORMAL', {
         query: message,
       });
       const data = response.data;
       const answer = data.Answer;
 
+      // '...' 메시지를 답으로 대체하도록 수정
       setMessages((prevMessages) => [
         ...prevMessages.slice(0, -1),
         { content: answer, sender: 'bot' },
@@ -52,34 +52,18 @@ function Chatroom() {
       const userMessage = query.trim();
       const userMessageObject = { content: userMessage, sender: 'user' };
 
-      // 새로운 메시지를 추가하여 대화 기록 업데이트
       setMessages((prevMessages) => [
         ...prevMessages,
         userMessageObject,
       ]);
 
-      // 로컬 스토리지에서 이전 대화 기록을 불러옴
       const savedChatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
-      
-      // 새로운 메시지를 대화 기록에 추가하고 로컬 스토리지에 저장
       const updatedChatHistory = [...savedChatHistory, userMessageObject];
       localStorage.setItem('chatHistory', JSON.stringify(updatedChatHistory));
 
       setQuery('');
 
-      const botResponse = await sendMessage(userMessage);
-
-      const botResponseObject = { content: botResponse, sender: 'bot' };
-
-      // 새로운 봇의 응답을 추가하여 대화 기록 업데이트
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        botResponseObject,
-      ]);
-
-      // 로컬 스토리지에서 이전 대화 기록을 불러온 다음 새로운 봇의 응답을 추가하고 저장
-      const updatedChatHistoryWithBot = [...updatedChatHistory, botResponseObject];
-      localStorage.setItem('chatHistory', JSON.stringify(updatedChatHistoryWithBot));
+      await sendMessage(userMessage);
     }
   };
 
@@ -131,7 +115,7 @@ function Chatroom() {
     ]);
 
     try {
-      const response = await axios.post('https://4c0b-1-231-206-74.ngrok-free.app/query/QUIZ', {
+      const response = await axios.post('https://ab96-1-231-206-74.ngrok-free.app/query/QUIZ', {
         BotType: 'QUIZ',
       });
       const data = response.data;
