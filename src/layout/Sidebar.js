@@ -79,7 +79,6 @@ function Sidebar () {
 
   
   return (
-    <div className="Sidebar custom-font">
     <div className="Sidebar">
       <div class="d-flex flex-column align-items-stretch flex-shrink-0" style={ { width : '250px', backgroundColor:'#F3F2EB'}}>
         {/* 홈 */}
@@ -128,8 +127,8 @@ function Sidebar () {
               {/* <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small> */}
               <small style = {{fontSize:'12px'}}>오후 2:30</small>
             </div>
-            <div className="col-10 mb-1 small">안녕하신가</div> 
-            {/* <div className="col-10 mb-1 small">{lastMessageContent.substring(0, 25)}</div> */}
+            {/* <div className="col-10 mb-1 small">안녕하신가</div>  */}
+            <div className="col-10 mb-1 small">{lastMessageContent.substring(0, 25)}</div>
         </a>
 
         <a href="http://localhost:3000/yeongjo" class="list-group-item list-group-item-action py-3 lh-tight">
@@ -160,7 +159,6 @@ function Sidebar () {
         
       )}
       </div>
-    </div>
     </div>
   )
 }

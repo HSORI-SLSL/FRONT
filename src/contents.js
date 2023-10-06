@@ -26,7 +26,8 @@ const ContentList = () => {
       if (selectedKing) {
         try {
           const responseBooks = await axios.post(
-            'https://ab96-1-231-206-74.ngrok-free.app/query/CRAWL',
+            'https://70a5-1-231-206-74.ngrok-free.app/query/CRAWL/Sejong',
+            // 'http://3.35.151.0:5000/query/CRAWL/Sejong',
             {
               query: selectedKing,
             },
@@ -36,7 +37,7 @@ const ContentList = () => {
           );
 
           const responseYoutube = await axios.post(
-            'https://ab96-1-231-206-74.ngrok-free.app/query/CRAWLY',
+            'http://3.35.151.0:5000/query/CRAWLY/Sejong',
             {
               query: selectedKing,
             },

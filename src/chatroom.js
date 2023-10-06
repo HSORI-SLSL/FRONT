@@ -27,7 +27,7 @@ function Chatroom() {
         { content: '...', sender: 'bot', isTyping: true },
       ]);
 
-      const response = await axios.post('https://968b-1-231-206-74.ngrok-free.app/query/NORMAL', {
+      const response = await axios.post('https://70a5-1-231-206-74.ngrok-free.app/query/NORMAL/Sejong', {
         query: message,
       });
       const data = response.data;
@@ -130,7 +130,7 @@ function Chatroom() {
     ]);
 
     try {
-      const response = await axios.post('https://968b-1-231-206-74.ngrok-free.app/query/QUIZ', {
+      const response = await axios.post('https://70a5-1-231-206-74.ngrok-free.app/query/QUIZ/Sejong', {
         BotType: 'QUIZ',
       });
       const data = response.data;

@@ -24,7 +24,7 @@ function Yeongjo() {
         { content: '...', sender: 'bot', isTyping: true },
       ]);
 
-      const response = await axios.post('https://da9b-1-231-206-74.ngrok-free.app/query/NORMAL', {
+      const response = await axios.post('https://70a5-1-231-206-74.ngrok-free.app/query/NORMAL/Yeongjo', {
         query: message,
       });
       const data = response.data;
@@ -107,7 +107,7 @@ function Yeongjo() {
     ]);
 
     try {
-      const response = await axios.post('https://da9b-1-231-206-74.ngrok-free.app/query/QUIZ', {
+      const response = await axios.post('https://70a5-1-231-206-74.ngrok-free.app/query/QUIZ/Yeongjo', {
         BotType: 'QUIZ',
       });
       const data = response.data;

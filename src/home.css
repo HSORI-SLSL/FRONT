@@ -6,7 +6,7 @@
   align-items: center;
   padding: 20px;
   width: 100%;
-  margin-left: 270px;
+  margin-left: 200px;
 }
 
 /* 인물정보 */
@@ -21,6 +21,7 @@
   margin-top: 0px;
   margin-bottom: 20px;
   border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(68, 47, 17, 0.2);
 }
 
 .person-info h5{
@@ -40,6 +41,7 @@
   
 
   justify-content: space-between;
+
 }
 
 
@@ -109,6 +111,7 @@
   border-radius: 10px;
   width: 100%;
   align-items: center;
+  box-shadow: 0px 4px 8px rgba(68, 47, 17, 0.2);
 }
 
 .recommended-content h5{
@@ -131,6 +134,7 @@
   display: flex;
   justify-content: flex-end;
   margin-right: 10px; 
+  border-radius: 5px;
 }
 
 /* 추천콘텐츠 상세 설명 */
