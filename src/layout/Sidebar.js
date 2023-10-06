@@ -79,6 +79,7 @@ function Sidebar () {
 
   
   return (
+    <div className="Sidebar custom-font">
     <div className="Sidebar">
       <div class="d-flex flex-column align-items-stretch flex-shrink-0" style={ { width : '250px', backgroundColor:'#F3F2EB'}}>
         {/* 홈 */}
@@ -159,6 +160,7 @@ function Sidebar () {
         
       )}
       </div>
+    </div>
     </div>
   )
 }

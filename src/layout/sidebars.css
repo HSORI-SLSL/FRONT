@@ -87,3 +87,7 @@ main {
 .btn-toggle-nav a:focus {
   background-color: #d2f4ea;
 }
+
+.Sidebar.custom-font {
+  font-family: 'GangwonEdu_OTFBoldA', sans-serif;
+}

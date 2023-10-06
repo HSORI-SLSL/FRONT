@@ -27,7 +27,7 @@ function Chatroom() {
         { content: '...', sender: 'bot', isTyping: true },
       ]);
 
-      const response = await axios.post('https://ab96-1-231-206-74.ngrok-free.app/query/NORMAL', {
+      const response = await axios.post('https://968b-1-231-206-74.ngrok-free.app/query/NORMAL', {
         query: message,
       });
       const data = response.data;
@@ -57,6 +57,7 @@ function Chatroom() {
         userMessageObject,
       ]);
 
+      // 사용자 메시지와 봇 메시지를 모두 저장
       const savedChatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
       const updatedChatHistory = [...savedChatHistory, userMessageObject];
       localStorage.setItem('chatHistory', JSON.stringify(updatedChatHistory));
@@ -67,42 +68,49 @@ function Chatroom() {
     }
   };
 
-  // 로컬 스토리지에서 채팅 기록을 초기화하는 함수
-  const handleClearChatHistory = async () => {
+  const handleClearChatHistory = () => {
+    // 초기화 버튼 클릭 시 '안녕하신가!' 메시지를 chatHistory에 추가
+    const initialGreeting = '안녕하신가!';
+    const initialGreetingMessage = { content: initialGreeting, sender: 'bot' };
 
-    setMessages([]); // 채팅창에서도 기록을 초기화
-    localStorage.removeItem('chatHistory');
-
-      // "안녕하신가!" 메시지 추가
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { content: '안녕하신가!', sender: 'bot' },
-    ]);
+    localStorage.setItem('chatHistory', JSON.stringify([initialGreetingMessage]));
+    setMessages([initialGreetingMessage]);
   };
-
   const enterKeyEventHandler = (e) => {
     if (e.key === 'Enter') {
       handleMessageSubmit(e);
     }
   };
 
-
   const chatRef = useRef(null);
-  const initialGreetingDisplayed = useRef(false);
+  const [initialGreetingDisplayed, setInitialGreetingDisplayed] = useState(false);
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 로컬 스토리지에서 대화 기록을 불러옴
+    const savedChatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+
+    if (savedChatHistory.length > 0) {
+      setMessages(savedChatHistory);
+    } else {
+      // 초기 대화 추가 (대화 기록이 없을 때)
+      const initialGreeting = '안녕하신가!';
+      setMessages([
+        ...savedChatHistory,
+        { content: initialGreeting, sender: 'bot' },
+      ]);
+      localStorage.setItem(
+        'chatHistory',
+        JSON.stringify([{ content: initialGreeting, sender: 'bot' }])
+      );
+      setInitialGreetingDisplayed(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (messages.length > 0) {
       setLastMessageContent(messages[messages.length - 1].content);
     }
 
-    if (!initialGreetingDisplayed.current) {
-      const initialGreeting = '안녕하신가!';
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { content: initialGreeting, sender: 'bot' },
-      ]);
-      initialGreetingDisplayed.current = true;
-    }
     scrollToBottom();
   }, [messages]);
 
@@ -122,7 +130,7 @@ function Chatroom() {
     ]);
 
     try {
-      const response = await axios.post('https://ab96-1-231-206-74.ngrok-free.app/query/QUIZ', {
+      const response = await axios.post('https://968b-1-231-206-74.ngrok-free.app/query/QUIZ', {
         BotType: 'QUIZ',
       });
       const data = response.data;
@@ -190,16 +198,8 @@ function Chatroom() {
     handleAnswerButtonClick(false);
   };
 
-  useEffect(() => {
-    scrollToBottom();
-    // 컴포넌트가 마운트될 때 로컬 스토리지에서 대화 기록을 불러옴
-    const savedChatHistory = localStorage.getItem('chatHistory');
-    if (savedChatHistory) {
-      setMessages(JSON.parse(savedChatHistory));
-    }
-  }, []);
-
   return (
+    <div className="Chatroom custom-font">
     <div className="chat-room container">
       <div className="chatheader chat-header-card">
         <div className="card-body d-flex justify-content-center align-items-center">
@@ -207,11 +207,9 @@ function Chatroom() {
         </div>
       </div>
 
-      
-
       <div className="chat-messages-container">
         <div className="chat-messages" ref={chatRef}>
-        {messages.map((msg, index) => (
+          {messages.map((msg, index) => (
             <div className="message" key={index}>
               {msg.sender === 'user' ? (
                 <div className="text user">{msg.content}</div>
@@ -228,18 +226,17 @@ function Chatroom() {
             </div>
           ))}
 
-           {/* o/x 버튼 */}
+          {/* o/x 버튼 */}
           {quizMode && (
             <div className="quiz">
               <div className="quiz-bot">
-              <div className="quiz-user">
-                <button type="button" class="btn btn-light" className="btn btn-o" style={{ fontSize: '38px', backgroundColor: 'grey', width: '80px'}} onClick={handleCorrectButtonClick}>
-                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M224 96a160 160 0 1 0 0 320 160 160 0 1 0 0-320zM448 256A224 224 0 1 1 0 256a224 224 0 1 1 448 0z"/></svg>
-                  
-                </button>
-                <button type="button" class="btn btn-light" className="btn btn-x" style={{ fontSize: '38px', backgroundColor: 'grey', marginLeft: '2px', width: '80px'}} onClick={handleIncorrectButtonClick}>
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>                       
-                </button>
+                <div className="quiz-user">
+                  <button type="button" className="btn btn-light" className="btn btn-o" style={{ fontSize: '38px', backgroundColor: 'grey', width: '80px'}} onClick={handleCorrectButtonClick}>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M224 96a160 160 0 1 0 0 320 160 160 0 1 0 0-320zM448 256A224 224 0 1 1 0 256a224 224 0 1 1 448 0z"/></svg>
+                  </button>
+                  <button type="button" className="btn btn-light" className="btn btn-x" style={{ fontSize: '38px', backgroundColor: 'grey', marginLeft: '2px', width: '80px'}} onClick={handleIncorrectButtonClick}>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -247,14 +244,12 @@ function Chatroom() {
         </div>
       </div>
 
-
       {/* 퀴즈 종료 버튼 - 퀴즈 모드일 때만 표시 */}
       {quizMode && (
-          <button type="button" className="btn btn-chat btn-quiz-end" onClick={handleQuizEndButtonClick}>
-            퀴즈 종료
-          </button>
-        )}
-
+        <button type="button" className="btn btn-chat btn-quiz-end" onClick={handleQuizEndButtonClick}>
+          퀴즈 종료
+        </button>
+      )}
 
       <div className="chatfooter chat-input">
         <div className="input-group input-group-lg">
@@ -290,7 +285,10 @@ function Chatroom() {
         </div>
       </div>
     </div>
+    </div>
   );
+  
 }
+
 
 export default Chatroom;

@@ -63,6 +63,7 @@ const ContentList = () => {
   }, [selectedKing]);
 
   return (
+    <div className="Contents custom-font">
     <div className='content-list'>
       <div className='king-buttons'>
         {kings.map((king) => (
@@ -283,6 +284,7 @@ const ContentList = () => {
           )}
         </div>
       )}
+    </div>
     </div>
   );
 };

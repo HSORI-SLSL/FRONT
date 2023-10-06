@@ -175,3 +175,7 @@
 .person-info-image {
   margin-bottom: 5px; /* 이미지 아래 여백 추가 */
 }
+
+.Home.custom-font {
+  font-family: 'GangwonEdu_OTFBoldA', sans-serif;
+}

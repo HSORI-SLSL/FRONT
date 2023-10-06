@@ -5,6 +5,7 @@ import './home.css';
 
 function Home() {
   return (
+    <div className="Home custom-font">
     <div className = "home">
       {/* 인물정보  */}
       <div className="person-info">
@@ -70,6 +71,7 @@ function Home() {
             </div>
           </div> 
         </div>
+      </div>
       </div>
   );
 }
