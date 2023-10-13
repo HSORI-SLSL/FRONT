@@ -4,7 +4,7 @@ const path = require("path");
 
 const app = express();
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 app.get("/ping", (req, res) => {
     res.send("pong");
@@ -21,6 +21,6 @@ res.set({
 res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-http.createServer(app).listen(port, () => {
-  console.log(`app listening at ${port}`);
+http.createServer(app).listen(port, '0.0.0.0', () => {
+    console.log(`app listening at ${port}`);
 });
