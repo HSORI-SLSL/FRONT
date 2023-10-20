@@ -64,7 +64,6 @@ function Sidebar () {
       .then(() => {
         console.log('로그아웃 성공');
         setIsLoggedin(false);
-        window.location.href = "http://localhost:3000/";
 
       })
       .catch((error) => {
@@ -74,7 +73,6 @@ function Sidebar () {
   };
   
  const clickMe = () => {
-    window.location.href = "http://localhost:3000/login";
   };
 
   

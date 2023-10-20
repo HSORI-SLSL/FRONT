@@ -20,6 +20,7 @@ function App() {
     <LastMessageProvider>
 
     <Routes>
+      
         <Route path="/" element={<WithSidebar component={Home} />} />
         <Route path="/chatroom" element={<WithSidebar component={ChatRoom} />} />
         <Route path="/taejong" element={<WithSidebar component={Taejong} />} />
