@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './sidebars.css';
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
-
+import { Link } from 'react-router-dom';
 import { useLastMessageContext } from '../LastMessageContext';
 
 function getFormattedTime12Hour() {
