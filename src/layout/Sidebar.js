@@ -26,7 +26,7 @@ function Sidebar () {
   const formattedTime12Hour = getFormattedTime12Hour();
 
   useEffect(() => {
-    setLocalLastMessageContent(lastMessageContent);
+    // setLocalLastMessageContent(lastMessageContent);
 
     // 사용자가 이미 로그인한지 확인합니다.
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -108,7 +108,8 @@ return (
             </strong>
             <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
           </div>
-          <div className="col-10 mb-1 small">{localLastMessageContent.substring(0, 25)}</div>
+          <div className="col-10 mb-1 small">안녕하신가</div>
+          {/* <div className="col-10 mb-1 small">{lastMessageContent.substring(0, 25)}</div> */}
           </a>
 
           <a href="http://localhost:3000/taejong" class="list-group-item list-group-item-action py-3 lh-tight">
@@ -144,7 +145,7 @@ return (
         로그아웃
         </button>
         ) : (
-        <button onClick={() => {  clickMe(); handleLogin();}} type="button" class="btn btn-light" style={{ marginTop: '130px' }}>
+        <button onClick={() => { clickMe(); handleLogin();}} type="button" class="btn btn-light" style={{ marginTop: '130px' }}>
         로그인
         </button>
         )}
