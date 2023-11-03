@@ -134,7 +134,6 @@
   display: flex;
   justify-content: flex-end;
   margin-right: 10px; 
-  border-radius: 5px;
 }
 
 /* 추천콘텐츠 상세 설명 */
@@ -189,4 +188,10 @@
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
+}
+
+.custom-image {
+  width: 80%;
+  height: 80%;
+  margin-top: 10%;
 }

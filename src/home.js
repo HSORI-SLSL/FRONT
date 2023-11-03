@@ -67,7 +67,7 @@ function Home() {
               <p>세종대왕과 관련된 영화, 드라마, 도서, 유튜브를 통해 더 많은 지식을 얻어 가세요!</p>
             </div>
             <div className="image">
-            <img src="/img/ezgif.com-gif-maker.gif" alt="Bot Avatar" className="avatar" width="300px" height="400px" />
+            <img src="/img/hi.gif" alt="Bot Avatar" className="avatar custom-image" width="300px" height="400px" />
             </div>
           </div> 
         </div>
