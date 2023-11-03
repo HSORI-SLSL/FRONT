@@ -3,14 +3,18 @@ import './chatroom.css';
 import axios from 'axios';
 import { useLastMessageContext } from './LastMessageContext';
 
-function saveChatHistory(messages) {
-  localStorage.setItem('chatHistory', JSON.stringify(messages));
+function saveChatHistory(chatPartner, messages) {
+  const storageKey = `chatHistory_${chatPartner}`;
+  localStorage.setItem(storageKey, JSON.stringify(messages));
 }
 
 function Chatroom() {
+  const chatPartner = 'Sejong';
+
   const [query, setQuery] = useState('');
   const [messages, setMessages] = useState(() => {
-    const storedChatHistory = sessionStorage.getItem('chatHistory');
+    const storageKey = `chatHistory_${chatPartner}`;
+    const storedChatHistory = localStorage.getItem(storageKey);
     return storedChatHistory ? JSON.parse(storedChatHistory) : [];
   });
   const [quizMode, setQuizMode] = useState(false);
@@ -67,7 +71,7 @@ function Chatroom() {
       await sendMessage(userMessage);
 
       const updatedChatHistory = [...messages, userMessageObject];
-      sessionStorage.setItem('chatHistory', JSON.stringify(updatedChatHistory));
+      saveChatHistory(chatPartner, updatedChatHistory); // 대화 내용 저장
     }
   };
 
@@ -88,12 +92,13 @@ function Chatroom() {
   const chatRef = useRef(null);
 
   useEffect(() => {
-    sessionStorage.setItem('chatHistory', JSON.stringify(messages));
+    saveChatHistory(chatPartner, messages); // 대화 내용 저장
   }, [messages]);
 
   useEffect(() => {
-    const savedChatHistory = JSON.parse(sessionStorage.getItem('chatHistory')) || [];
-
+    const storageKey = `chatHistory_${chatPartner}`;
+    const savedChatHistory = JSON.parse(localStorage.getItem(storageKey)) || [];
+  
     if (savedChatHistory.length > 0) {
       setMessages(savedChatHistory);
     } else {
@@ -101,6 +106,7 @@ function Chatroom() {
       const initialGreeting = '안녕하신가!';
       const initialGreetingMessage = { content: initialGreeting, sender: 'bot' };
       setMessages([initialGreetingMessage]);
+  
     }
   }, []);
 

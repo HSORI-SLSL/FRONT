@@ -3,14 +3,18 @@ import './chatroom.css';
 import axios from 'axios';
 import { useLastMessageContext } from './LastMessageContext';
 
-function saveChatHistory(messages) {
-  localStorage.setItem('chatHistory', JSON.stringify(messages));
+function saveChatHistory(chatPartner, messages) {
+  const storageKey = `chatHistory_${chatPartner}`;
+  localStorage.setItem(storageKey, JSON.stringify(messages));
 }
 
 function Chatroom() {
+  const chatPartner = 'Taejong'; // 대화 상대 식별자, 예: 'Taejong'
+
   const [query, setQuery] = useState('');
   const [messages, setMessages] = useState(() => {
-    const storedChatHistory = sessionStorage.getItem('chatHistory');
+    const storageKey = `chatHistory_${chatPartner}`;
+    const storedChatHistory = localStorage.getItem(storageKey);
     return storedChatHistory ? JSON.parse(storedChatHistory) : [];
   });
   const [quizMode, setQuizMode] = useState(false);
@@ -41,7 +45,7 @@ function Chatroom() {
         { content: answer, sender: 'bot' },
       ]);
 
-      // 메시지 전송 후 setLastMessageContent를 사용하여 최신 메시지 업데이트
+      // 메시지 전송 후 setTaejongLatestMessage를 사용하여 최신 메시지 업데이트
       setTaejongLatestMessage(answer);
 
       return answer;
@@ -67,7 +71,8 @@ function Chatroom() {
       await sendMessage(userMessage);
 
       const updatedChatHistory = [...messages, userMessageObject];
-      sessionStorage.setItem('chatHistory', JSON.stringify(updatedChatHistory));
+      saveChatHistory(chatPartner, updatedChatHistory); // 대화 내용 저장
+
     }
   };
 
@@ -76,7 +81,7 @@ function Chatroom() {
     const initialGreeting = '안녕하신가!';
     const initialGreetingMessage = { content: initialGreeting, sender: 'bot' };
 
-    localStorage.setItem('chatHistory', JSON.stringify([initialGreetingMessage]));
+    localStorage.setItem(`chatHistory_${chatPartner}`, JSON.stringify([initialGreetingMessage]));
     setMessages([initialGreetingMessage]);
   };
   const enterKeyEventHandler = (e) => {
@@ -88,11 +93,12 @@ function Chatroom() {
   const chatRef = useRef(null);
 
   useEffect(() => {
-    sessionStorage.setItem('chatHistory', JSON.stringify(messages));
+    saveChatHistory(chatPartner, messages); // 대화 내용 저장
   }, [messages]);
   
   useEffect(() => {
-    const savedChatHistory = JSON.parse(sessionStorage.getItem('chatHistory')) || [];
+    const storageKey = `chatHistory_${chatPartner}`;
+    const savedChatHistory = JSON.parse(localStorage.getItem(storageKey)) || [];
   
     if (savedChatHistory.length > 0) {
       setMessages(savedChatHistory);
@@ -223,10 +229,10 @@ function Chatroom() {
               <div className="quiz-bot">
                 <div className="quiz-user">
                   <button type="button" className1="btn btn-light" className="btn btn-o" style={{ fontSize: '38px', backgroundColor: 'grey', width: '80px'}} onClick={handleCorrectButtonClick}>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M224 96a160 160 0 1 0 0 320 160 160 0 1 0 0-320zM448 256A224 224 0 1 1 0 256a224 224 0 1 1 448 0z"/></svg>
+                    <svg xmlns="http://w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M224 96a160 160 0 1 0 0 320 160 160 0 1 0 0-320zM448 256A224 224 0 1 1 0 256a224 224 0 1 1 448 0"/></svg>
                   </button>
                   <button type="button" className1="btn btn-light" className="btn btn-x" style={{ fontSize: '38px', backgroundColor: 'grey', marginLeft: '2px', width: '80px'}} onClick={handleIncorrectButtonClick}>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>
+                    <svg xmlns="http://w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s-33.8 9.5-45.1 4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s-15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>
                   </button>
                 </div>
               </div>
@@ -278,7 +284,6 @@ function Chatroom() {
     </div>
     </div>
   );
-  
 }
 
 

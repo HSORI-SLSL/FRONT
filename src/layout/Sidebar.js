@@ -99,7 +99,7 @@ function Sidebar() {
                   <img src="/img/taejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
                   태종
                 </strong>
-                <small style={{ fontSize: '12px' }}>오후 2:30</small>
+                <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
               </div>
               <div className="col-10 mb-1 small">{taejongLatestMessage}</div>
             </a>
@@ -110,7 +110,7 @@ function Sidebar() {
                   <img src="/img/yeongjo.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
                   영조
                 </strong>
-                <small style={{ fontSize: '12px' }}>오후 2:30</small>
+                <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
               </div>
               <div className="col-10 mb-1 small">{yeongjoLatestMessage}</div>
             </a>

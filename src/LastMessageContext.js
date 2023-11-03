@@ -4,10 +4,10 @@ const LastMessageContext = createContext();
 
 export function LastMessageProvider({ children }) {
   const [lastMessageContent, setLastMessageContent] = useState('');
-  const [sejongLatestMessage, setSejongLatestMessage] = useState('');
+  const [sejongLatestMessage, setSejongLatestMessage] = useState('안녕하신가!');
   // 다른 채팅방에 대한 상태 변수 추가
-  const [taejongLatestMessage, setTaejongLatestMessage] = useState('');
-  const [yeongjoLatestMessage, setYeongjoLatestMessage] = useState('');
+  const [taejongLatestMessage, setTaejongLatestMessage] = useState('안녕하신가!');
+  const [yeongjoLatestMessage, setYeongjoLatestMessage] = useState('안녕하신가!');
 
   useEffect(() => {
     // 세션 스토리지에서 이전에 저장된 마지막 대화 내용 가져오기
