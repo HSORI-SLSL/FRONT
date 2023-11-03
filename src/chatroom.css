@@ -75,7 +75,7 @@ white-space: nowrap;
   /* background-color: #f0f0f0; */
   background-color: #ffffff;
   display: flex;
-  max-width: 55%; 
+  max-width: 70%; 
 }
 
 .avatar-container{
@@ -164,7 +164,13 @@ white-space: nowrap;
 }
 
 .Chatroom.custom-font {
-  font-family: 'GangwonEdu_OTFBoldA', sans-serif;
+  font-family: 'HakgyoansimSantteutdotumL', sans-serif;
 }
 
 
+@font-face {
+  font-family: 'HakgyoansimSantteutdotumL';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}

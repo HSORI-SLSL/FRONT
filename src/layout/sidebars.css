@@ -88,6 +88,12 @@ main {
   background-color: #d2f4ea;
 }
 
+.sayongja{
+  width:100px;
+  border-radius: 30px;
+  margin-left: 75px;
+}
+
 .Sidebar.custom-font {
   font-family: 'HakgyoansimSantteutdotumL', sans-serif;
 }
