@@ -73,6 +73,7 @@ white-space: nowrap;
   /* background-color: #f0f0f0; */
   background-color: #ffffff;
   display: flex;
+  max-width: 55%; 
 }
 
 .avatar-container{

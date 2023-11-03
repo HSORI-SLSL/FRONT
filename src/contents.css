@@ -182,3 +182,7 @@
   font-weight: 300;
   font-style: normal;
 }
+
+.avatar {
+  border-radius: 10px; /* 숫자를 조절하여 원하는 둥근 정도 설정 */
+}
