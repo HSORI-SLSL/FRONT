@@ -17,7 +17,7 @@ function Chatroom() {
   const [quizAnswer, setQuizAnswer] = useState('');
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-  const { setLastMessageContent } = useLastMessageContext();
+  const { setTaejongLatestMessage } = useLastMessageContext();
 
   const handleMessageChange = (event) => {
     setQuery(event.target.value);
@@ -40,6 +40,9 @@ function Chatroom() {
         ...prevMessages.slice(0, -1),
         { content: answer, sender: 'bot' },
       ]);
+
+      // 메시지 전송 후 setLastMessageContent를 사용하여 최신 메시지 업데이트
+      setTaejongLatestMessage(answer);
 
       return answer;
     } catch (error) {

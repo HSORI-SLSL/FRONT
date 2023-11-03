@@ -17,7 +17,7 @@ function Chatroom() {
   const [quizAnswer, setQuizAnswer] = useState('');
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-  const { setLastMessageContent } = useLastMessageContext();
+  const { setSejongLatestMessage } = useLastMessageContext(); // 수정된 부분
 
   const handleMessageChange = (event) => {
     setQuery(event.target.value);
@@ -40,6 +40,9 @@ function Chatroom() {
         ...prevMessages.slice(0, -1),
         { content: answer, sender: 'bot' },
       ]);
+
+      // 메시지 전송 후 setSejongLatestMessage를 사용하여 최신 메시지 업데이트
+      setSejongLatestMessage(answer);
 
       return answer;
     } catch (error) {
@@ -87,10 +90,10 @@ function Chatroom() {
   useEffect(() => {
     sessionStorage.setItem('chatHistory', JSON.stringify(messages));
   }, [messages]);
-  
+
   useEffect(() => {
     const savedChatHistory = JSON.parse(sessionStorage.getItem('chatHistory')) || [];
-  
+
     if (savedChatHistory.length > 0) {
       setMessages(savedChatHistory);
     } else {
@@ -98,7 +101,6 @@ function Chatroom() {
       const initialGreeting = '안녕하신가!';
       const initialGreetingMessage = { content: initialGreeting, sender: 'bot' };
       setMessages([initialGreetingMessage]);
-  
     }
   }, []);
 
@@ -188,95 +190,93 @@ function Chatroom() {
 
   return (
     <div className="Chatroom custom-font">
-    <div className="chat-room container">
-      <div className="chatheader chat-header-card">
-        <div className="card-body d-flex justify-content-center align-items-center">
-          세종대왕
+      <div className="chat-room container">
+        <div className="chatheader chat-header-card">
+          <div className="card-body d-flex justify-content-center align-items-center">
+            세종대왕
+          </div>
         </div>
-      </div>
 
-      <div className="chat-messages-container">
-        <div className="chat-messages" ref={chatRef}>
-          {messages.map((msg, index) => (
-            <div className="message" key={index}>
-              {msg.sender === 'user' ? (
-                <div className="text user">{msg.content}</div>
-              ) : (
-                <div className={`text bot ${quizMode && index === messages.length - 1 ? 'quiz' : ''}`}>
-                  <div className="avatar-container">
-                    <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" />
+        <div className="chat-messages-container">
+          <div className="chat-messages" ref={chatRef}>
+            {messages.map((msg, index) => (
+              <div className="message" key={index}>
+                {msg.sender === 'user' ? (
+                  <div className="text user">{msg.content}</div>
+                ) : (
+                  <div className={`text bot ${quizMode && index === messages.length - 1 ? 'quiz' : ''}`}>
+                    <div className="avatar-container">
+                      <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" />
+                    </div>
+                    <div className="text bot2">
+                      {msg.content}
+                    </div>
                   </div>
-                  <div className="text bot2">
-                    {msg.content}
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            ))}
 
-          {/* o/x 버튼 */}
-          {quizMode && (
-            <div className="quiz">
-              <div className="quiz-bot">
-                <div className="quiz-user">
-                  <button type="button" className1="btn btn-light" className="btn btn-o" style={{ fontSize: '38px', backgroundColor: 'grey', width: '80px'}} onClick={handleCorrectButtonClick}>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M224 96a160 160 0 1 0 0 320 160 160 0 1 0 0-320zM448 256A224 224 0 1 1 0 256a224 224 0 1 1 448 0z"/></svg>
-                  </button>
-                  <button type="button" className1="btn btn-light" className="btn btn-x" style={{ fontSize: '38px', backgroundColor: 'grey', marginLeft: '2px', width: '80px'}} onClick={handleIncorrectButtonClick}>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>
-                  </button>
+            {/* o/x 버튼 */}
+            {quizMode && (
+              <div className="quiz">
+                <div className="quiz-bot">
+                  <div className="quiz-user">
+                    <button type="button" className="btn btn-o" style={{ fontSize: '38px', backgroundColor: 'grey', width: '80px' }} onClick={handleCorrectButtonClick}>
+                      <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M224 96a160 160 0 1 0 0 320 160 160 0 1 0 0-320zM448 256A224 224 0 1 1 0 256a224 224 0 1 1 448 0z" /></svg>
+                    </button>
+                    <button type="button" className="btn btn-x" style={{ fontSize: '38px', backgroundColor: 'grey', marginLeft: '2px', width: '80px' }} onClick={handleIncorrectButtonClick}>
+                      <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" /></svg>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* 퀴즈 종료 버튼 - 퀴즈 모드일 때만 표시 */}
-      {quizMode && (
-        <button type="button" className="btn btn-chat btn-quiz-end" onClick={handleQuizEndButtonClick}>
-          퀴즈 종료
-        </button>
-      )}
+        {/* 퀴즈 종료 버튼 - 퀴즈 모드일 때만 표시 */}
+        {quizMode && (
+          <button type="button" className="btn btn-chat btn-quiz-end" onClick={handleQuizEndButtonClick}>
+            퀴즈 종료
+          </button>
+        )}
 
-      <div className="chatfooter chat-input">
-        <div className="input-group input-group-lg">
-          {!quizMode && (
-            <button type="button" className="btn btn-chat" onClick={handleQuizButtonClick}>
-              Q
+        <div className="chatfooter chat-input">
+          <div className="input-group input-group-lg">
+            {!quizMode && (
+              <button type="button" className="btn btn-chat" onClick={handleQuizButtonClick}>
+                Q
+              </button>
+            )}
+            <input
+              type="text"
+              className="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-lg"
+              placeholder="메시지를 입력하세요"
+              value={query}
+              onChange={handleMessageChange}
+              onKeyPress={enterKeyEventHandler}
+            />
+            <button
+              type="button"
+              className="btn btn-chat"
+              onClick={handleMessageSubmit}
+            >
+              전송
             </button>
-          )}
-          <input
-            type="text"
-            className="form-control"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-lg"
-            placeholder="메시지를 입력하세요"
-            value={query}
-            onChange={handleMessageChange}
-            onKeyPress={enterKeyEventHandler}
-          />
-          <button
-            type="button"
-            className="btn btn-chat"
-            onClick={handleMessageSubmit}
-          >
-            전송
-          </button>
-          <button
-            type="button"
-            className="btn btn-chat"
-            onClick={handleClearChatHistory}
-          >
-            초기화
-          </button>
+            <button
+              type="button"
+              className="btn btn-chat"
+              onClick={handleClearChatHistory}
+            >
+              초기화
+            </button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
-  
 }
-
 
 export default Chatroom;
