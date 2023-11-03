@@ -19,6 +19,10 @@ function Sidebar() {
   const [userEmail, setUserEmail] = useState('');
 
   const { lastMessageContent, sejongLatestMessage, taejongLatestMessage, yeongjoLatestMessage } = useLastMessageContext();
+  // 각 대화방의 최신 메시지를 20글자로 제한한 변수
+  const sejongLatestMessageLimited = sejongLatestMessage.slice(0, 30);
+  const taejongLatestMessageLimited = taejongLatestMessage.slice(0, 20);
+  const yeongjoLatestMessageLimited = yeongjoLatestMessage.slice(0, 20);
   const formattedTime12Hour = getFormattedTime12Hour();
 
   useEffect(() => {
@@ -90,7 +94,7 @@ function Sidebar() {
                 </strong>
                 <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
               </div>
-              <div className="col-10 mb-1 small">{sejongLatestMessage}</div>
+              <div className="col-10 mb-1 small">{sejongLatestMessageLimited}</div>
             </a>
 
             <a href="http://localhost:3000/taejong" className="list-group-item list-group-item-action py-3 lh-tight">
@@ -101,7 +105,7 @@ function Sidebar() {
                 </strong>
                 <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
               </div>
-              <div className="col-10 mb-1 small">{taejongLatestMessage}</div>
+              <div className="col-10 mb-1 small">{taejongLatestMessageLimited}</div>
             </a>
 
             <a href="http://localhost:3000/yeongjo" className="list-group-item list-group-item-action py-3 lh-tight">
@@ -112,7 +116,7 @@ function Sidebar() {
                 </strong>
                 <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
               </div>
-              <div className="col-10 mb-1 small">{yeongjoLatestMessage}</div>
+              <div className="col-10 mb-1 small">{yeongjoLatestMessageLimited}</div>
             </a>
           </div>
 
