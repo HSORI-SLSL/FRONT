@@ -100,7 +100,7 @@ return (
         {/* 채팅 목록 */}
         {/* 세종대왕 대화 목록  */}
         <div class="list-group list-group-flush border-bottom">
-          <a href="http://localhost:3000/chatroom" class="list-group-item list-group-item-action py-3 lh-tight">
+          <a href="<a href=http://43.200.187.178:8000/chatroom" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
             <strong class="mb-1" margin="30px">
               <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
@@ -112,7 +112,7 @@ return (
           {/* <div className="col-10 mb-1 small">{lastMessageContent.substring(0, 25)}</div> */}
           </a>
 
-          <a href="http://localhost:3000/taejong" class="list-group-item list-group-item-action py-3 lh-tight">
+          <a href="http://43.200.187.178:8000/taejong" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
               <strong class="mb-1" margin="30px">
                 <img src="/img/taejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
@@ -125,7 +125,7 @@ return (
             {/* <div className="col-10 mb-1 small">{lastMessageContent.substring(0, 25)}</div> */}
           </a>
 
-          <a href="http://localhost:3000/yeongjo" class="list-group-item list-group-item-action py-3 lh-tight">
+          <a href="http://43.200.187.178:8000/yeongjo" class="list-group-item list-group-item-action py-3 lh-tight">
             <div class="d-flex w-100 align-items-center justify-content-between">
               <strong class="mb-1" margin="30px">
                 <img src="/img/yeongjo.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
