@@ -21,7 +21,7 @@ function Chatroom() {
   const [quizAnswer, setQuizAnswer] = useState('');
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-  const { setSejongLatestMessage } = useLastMessageContext(); // 수정된 부분
+  const { setSejongLatestMessage, clearChatHistory } = useLastMessageContext(); // 수정된 부분
 
   const handleMessageChange = (event) => {
     setQuery(event.target.value);
@@ -47,6 +47,7 @@ function Chatroom() {
 
       // 메시지 전송 후 setSejongLatestMessage를 사용하여 최신 메시지 업데이트
       setSejongLatestMessage(answer);
+      console.log("세종 대화방 최신 메시지 업데이트:", answer);
 
       return answer;
     } catch (error) {
@@ -82,6 +83,8 @@ function Chatroom() {
 
     localStorage.setItem('chatHistory', JSON.stringify([initialGreetingMessage]));
     setMessages([initialGreetingMessage]);
+
+    clearChatHistory();
   };
   const enterKeyEventHandler = (e) => {
     if (e.key === 'Enter') {

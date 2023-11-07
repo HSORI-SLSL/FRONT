@@ -21,7 +21,7 @@ function Chatroom() {
   const [quizAnswer, setQuizAnswer] = useState('');
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-  const { setTaejongLatestMessage } = useLastMessageContext();
+  const { setTaejongLatestMessage, clearChatHistory1 } = useLastMessageContext();
 
   const handleMessageChange = (event) => {
     setQuery(event.target.value);
@@ -83,7 +83,10 @@ function Chatroom() {
 
     localStorage.setItem(`chatHistory_${chatPartner}`, JSON.stringify([initialGreetingMessage]));
     setMessages([initialGreetingMessage]);
+
+    clearChatHistory1();
   };
+
   const enterKeyEventHandler = (e) => {
     if (e.key === 'Enter') {
       handleMessageSubmit(e);
