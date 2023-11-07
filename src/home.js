@@ -9,11 +9,16 @@ function Home() {
     <div className = "home">
       {/* 인물정보  */}
       <div className="person-info">
-      <h5>인물정보</h5>
+        <div className="info">
+          <h5>인물정보&nbsp;</h5>
+          <p>각 왕을 클릭하여 조선왕조실록을 열람해보세요</p>
+        </div>
         <div className="person-info2">
           <div className="person-info-item">
             <div className="person-info-image">
-              <img className="person-image" alt="Sejong" src="img/sejong.png" />
+              <a href="https://sillok.history.go.kr/search/inspectionMonthList.do?id=kda">
+                <img className="person-image" alt="Sejong" src="img/sejong.png" />
+              </a>
             </div>
             <div className="person-info-text">
               <h6>세종대왕</h6>
@@ -23,7 +28,9 @@ function Home() {
           </div>
           <div className="person-info-item">
             <div className="person-info-image">
-              <img className="person-image" alt="Sejong" src="img/taejong.png" />
+              <a href="https://sillok.history.go.kr/search/inspectionMonthList.do?id=kca">
+                <img className="person-image" alt="Sejong" src="img/taejong.png" />
+              </a>
             </div>
             <div className="person-info-text">
               <h6>태종</h6>
@@ -33,7 +40,9 @@ function Home() {
           </div>
           <div className="person-info-item">
             <div className="person-info-image">
-              <img className="person-image" alt="Sejong" src="img/yeongjo.png" />
+              <a href="https://sillok.history.go.kr/search/inspectionMonthList.do?id=kua">
+                <img className="person-image" alt="Sejong" src="img/yeongjo.png" />
+              </a>
             </div>
             <div className="person-info-text">
               <h6>영조</h6>
@@ -67,7 +76,7 @@ function Home() {
               <p>세종대왕과 관련된 영화, 드라마, 도서, 유튜브를 통해 더 많은 지식을 얻어 가세요!</p>
             </div>
             <div className="image">
-            <img src="/img/hi.gif" alt="Bot Avatar" className="avatar custom-image" width="300px" height="400px" />
+            <img src="/img/ezgif.com-gif-maker.gif" alt="Bot Avatar" className="avatar" width="300px" height="400px" />
             </div>
           </div> 
         </div>
