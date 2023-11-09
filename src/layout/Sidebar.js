@@ -94,7 +94,7 @@ function Sidebar() {
           </span>
           
           <div className="list-group list-group-flush border-bottom">
-          <Link to="/chatroom" className="list-group-item list-group-item-action py-3 lh-tight">
+          <Link to="/log/chatroom" className="list-group-item list-group-item-action py-3 lh-tight">
    <div className="d-flex w-100 align-items-center justify-content-between">
                 <strong className="mb-1" margin="30px">
                   <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
