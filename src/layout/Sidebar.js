@@ -14,15 +14,22 @@ function getFormattedTime12Hour() {
   return `${ampm} ${formattedHours}:${formattedMinutes}`;
 }
 
+function truncateText(text, maxLength) {
+  if (text.length > maxLength) {
+    return text.slice(0, maxLength) + '...';
+  }
+  return text;
+}
+
 function Sidebar() {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [userEmail, setUserEmail] = useState('');
 
   const { lastMessageContent, sejongLatestMessage, taejongLatestMessage, yeongjoLatestMessage } = useLastMessageContext();
   // 각 대화방의 최신 메시지를 20글자로 제한한 변수
-  const sejongLatestMessageLimited = sejongLatestMessage.slice(0, 30);
-  const taejongLatestMessageLimited = taejongLatestMessage.slice(0, 20);
-  const yeongjoLatestMessageLimited = yeongjoLatestMessage.slice(0, 20);
+  const sejongLatestMessageLimited = truncateText(sejongLatestMessage, 17);
+  const taejongLatestMessageLimited = truncateText(taejongLatestMessage, 17);
+  const yeongjoLatestMessageLimited = truncateText(yeongjoLatestMessage, 17);
   const formattedTime12Hour = getFormattedTime12Hour();
 
   useEffect(() => {
@@ -82,10 +89,10 @@ function Sidebar() {
           
           <div className='user'> {userEmail ? `${userEmail}` : '실록샐록'} </div>
 
-          <span className="fs-5 fw-semibold" style={{ marginTop: '90px' }}>
+          <span className="fs-5 fw-semibold" style={{ marginTop: '70px' }}>
             대화 목록
           </span>
-
+          
           <div className="list-group list-group-flush border-bottom">
             <a href="http://localhost:3000/chatroom" className="list-group-item list-group-item-action py-3 lh-tight">
               <div className="d-flex w-100 align-items-center justify-content-between">
@@ -95,7 +102,7 @@ function Sidebar() {
                 </strong>
                 <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
               </div>
-              <div className="col-10 mb-1 small">{sejongLatestMessageLimited}</div>
+              <div className="col-13 mx-1 small">{sejongLatestMessageLimited}</div>
             </a>
 
             <a href="http://localhost:3000/taejong" className="list-group-item list-group-item-action py-3 lh-tight">
@@ -106,7 +113,7 @@ function Sidebar() {
                 </strong>
                 <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
               </div>
-              <div className="col-10 mb-1 small">{taejongLatestMessageLimited}</div>
+              <div className="col-13 mx-1 small">{taejongLatestMessageLimited}</div>
             </a>
 
             <a href="http://localhost:3000/yeongjo" className="list-group-item list-group-item-action py-3 lh-tight">
@@ -117,7 +124,7 @@ function Sidebar() {
                 </strong>
                 <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
               </div>
-              <div className="col-10 mb-1 small">{yeongjoLatestMessageLimited}</div>
+              <div className="col-13 mx-1 small">{yeongjoLatestMessageLimited}</div>
             </a>
           </div>
 
@@ -126,7 +133,7 @@ function Sidebar() {
               로그아웃
             </button>
           ) : (
-            <button onClick={() => { clickMe(); handleLogin(); }} type="button" className="btn btn-light" style={{ marginTop: '130px' }}>
+            <button onClick={() => { clickMe(); handleLogin(); }} type="button" className="btn btn-light" style={{ marginTop: '90px' }}>
               로그인
             </button>
           )}

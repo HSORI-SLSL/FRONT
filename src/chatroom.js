@@ -56,11 +56,12 @@ function Chatroom() {
     }
   };
 
+
   const handleMessageSubmit = async (e) => {
     e.preventDefault();
     if (query.trim() !== '') {
       const userMessage = query.trim();
-      const userMessageObject = { content: userMessage, sender: 'user' };
+      const userMessageObject = { content: userMessage, sender: 'user'};
 
       setMessages((prevMessages) => [
         ...prevMessages,
