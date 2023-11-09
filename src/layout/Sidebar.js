@@ -94,7 +94,7 @@ function Sidebar() {
           </span>
           
           <div className="list-group list-group-flush border-bottom">
-            <a href="http://localhost:3000/chatroom" className="list-group-item list-group-item-action py-3 lh-tight">
+            <a href="http://43.200.187.178:8000/chatroom" className="list-group-item list-group-item-action py-3 lh-tight">
               <div className="d-flex w-100 align-items-center justify-content-between">
                 <strong className="mb-1" margin="30px">
                   <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
@@ -105,7 +105,7 @@ function Sidebar() {
               <div className="col-13 mx-1 small">{sejongLatestMessageLimited}</div>
             </a>
 
-            <a href="http://localhost:3000/taejong" className="list-group-item list-group-item-action py-3 lh-tight">
+            <a href="http://43.200.187.178:8000/taejong" className="list-group-item list-group-item-action py-3 lh-tight">
               <div className="d-flex w-100 align-items-center justify-content-between">
                 <strong className="mb-1" margin="30px">
                   <img src="/img/taejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
@@ -116,7 +116,7 @@ function Sidebar() {
               <div className="col-13 mx-1 small">{taejongLatestMessageLimited}</div>
             </a>
 
-            <a href="http://localhost:3000/yeongjo" className="list-group-item list-group-item-action py-3 lh-tight">
+            <a href="http://43.200.187.178:8000/yeongjo" className="list-group-item list-group-item-action py-3 lh-tight">
               <div className="d-flex w-100 align-items-center justify-content-between">
                 <strong className="mb-1" margin="30px">
                   <img src="/img/yeongjo.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
