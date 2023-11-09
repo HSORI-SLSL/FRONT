@@ -94,7 +94,7 @@ function Sidebar() {
           </span>
           
           <div className="list-group list-group-flush border-bottom">
-          <Link to="/log/chatroom" className="list-group-item list-group-item-action py-3 lh-tight">
+          <Link to="/chatroom" className="list-group-item list-group-item-action py-3 lh-tight">
    <div className="d-flex w-100 align-items-center justify-content-between">
                 <strong className="mb-1" margin="30px">
                   <img src="/img/sejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
@@ -106,7 +106,7 @@ function Sidebar() {
           
 </Link>
 
-            <a href="http://43.200.187.178:8000/taejong" className="list-group-item list-group-item-action py-3 lh-tight">
+<Link to="/taejong" className="list-group-item list-group-item-action py-3 lh-tight">
               <div className="d-flex w-100 align-items-center justify-content-between">
                 <strong className="mb-1" margin="30px">
                   <img src="/img/taejong.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
@@ -115,9 +115,9 @@ function Sidebar() {
                 <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
               </div>
               <div className="col-13 mx-1 small">{taejongLatestMessageLimited}</div>
-            </a>
+          </Link>
 
-            <a href="http://43.200.187.178:8000/yeongjo" className="list-group-item list-group-item-action py-3 lh-tight">
+          <Link to="/yeongjo" className="list-group-item list-group-item-action py-3 lh-tight">
               <div className="d-flex w-100 align-items-center justify-content-between">
                 <strong className="mb-1" margin="30px">
                   <img src="/img/yeongjo.png" alt="Bot Avatar" className="avatar" width="40px" style={{ marginRight: '10px' }} />
@@ -126,7 +126,7 @@ function Sidebar() {
                 <small style={{ fontSize: '12px' }}>{formattedTime12Hour}</small>
               </div>
               <div className="col-13 mx-1 small">{yeongjoLatestMessageLimited}</div>
-            </a>
+           </Link>
           </div>
 
           {isLoggedin ? (
