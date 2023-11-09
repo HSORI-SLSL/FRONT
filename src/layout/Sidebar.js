@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './sidebars.css';
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 import { useLastMessageContext } from '../LastMessageContext';
+import { Link } from 'react-router-dom';
 
 function getFormattedTime12Hour() {
   const today = new Date();
