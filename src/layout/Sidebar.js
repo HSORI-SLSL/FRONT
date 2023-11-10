@@ -7,7 +7,6 @@ function getFormattedTime12Hour() {
   const today = new Date();
   const hours = today.getHours();
   const minutes = today.getMinutes();
-  const seconds = today.getSeconds();
   const ampm = hours >= 12 ? '오후' : '오전';
   const formattedHours = String(hours % 12 || 12).padStart(2, '0');
   const formattedMinutes = String(minutes).padStart(2, '0');
@@ -25,7 +24,7 @@ function Sidebar() {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [userEmail, setUserEmail] = useState('');
 
-  const { lastMessageContent, sejongLatestMessage, taejongLatestMessage, yeongjoLatestMessage } = useLastMessageContext();
+  const {sejongLatestMessage, taejongLatestMessage, yeongjoLatestMessage } = useLastMessageContext();
   // 각 대화방의 최신 메시지를 20글자로 제한한 변수
   const sejongLatestMessageLimited = truncateText(sejongLatestMessage, 17);
   const taejongLatestMessageLimited = truncateText(taejongLatestMessage, 17);
@@ -129,11 +128,11 @@ function Sidebar() {
           </div>
 
           {isLoggedin ? (
-            <button onClick={handleLogout} type="button" className="btn btn-light" style={{ marginTop: '130px' }}>
+            <button onClick={handleLogout} type="button" className="btn btn-light" style={{ marginTop: '100px' }}>
               로그아웃
             </button>
           ) : (
-            <button onClick={() => { clickMe(); handleLogin(); }} type="button" className="btn btn-light" style={{ marginTop: '90px' }}>
+            <button onClick={() => { clickMe(); handleLogin(); }} type="button" className="btn btn-light" style={{ marginTop: '100px' }}>
               로그인
             </button>
           )}
