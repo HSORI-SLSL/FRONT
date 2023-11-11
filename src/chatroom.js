@@ -23,6 +23,7 @@ function Chatroom() {
 
   const { setSejongLatestMessage, clearChatHistory } = useLastMessageContext(); // 수정된 부분
 
+  
   const handleMessageChange = (event) => {
     setQuery(event.target.value);
   };
@@ -56,12 +57,25 @@ function Chatroom() {
     }
   };
 
+  const getCurrentTime = () => {
+    const today = new Date();
+    const hours = today.getHours();
+    const minutes = today.getMinutes();
+    const ampm = hours >= 12 ? '오후' : '오전';
+    const formattedHours = String(hours % 12 || 12).padStart(2, '0');
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    return `${ampm} ${formattedHours}:${formattedMinutes}`;
+  };
+
+  const [userChatroomTime, setUserChatroomTime] = useState('');
 
   const handleMessageSubmit = async (e) => {
     e.preventDefault();
     if (query.trim() !== '') {
       const userMessage = query.trim();
-      const userMessageObject = { content: userMessage, sender: 'user'};
+      const userMessageObject = { content: userMessage, sender: 'user', time: getCurrentTime()};
+
+      console.log(getCurrentTime());
 
       setMessages((prevMessages) => [
         ...prevMessages,
@@ -197,6 +211,7 @@ function Chatroom() {
   const handleIncorrectButtonClick = () => {
     handleAnswerButtonClick(false);
   };
+  
 
   return (
     <div className="Chatroom custom-font">
