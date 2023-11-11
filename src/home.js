@@ -17,7 +17,7 @@ function Home() {
   };
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) => Math.min(prevIndex + 1) % (maxIndex + 1));
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
   const startAutoSlide = () => {
@@ -106,14 +106,24 @@ function Home() {
               <h7> 왕에 관한 흥미로운 이야기와 관련된 콘텐츠를 발견하고 역사의 흐름을 새롭게 경험해보세요</h7>
               <div class="image-container">
               <div>
-              <button onClick={handlePrevImage}>&lt;prev</button>
-              {images
-                .slice(currentImageIndex, currentImageIndex + imagesPerGroup)
-                .map((image, index) => (
-                  <img key={index} className="person-image" alt={`Sejong ${currentImageIndex + index}`} src={image} />
-                ))}
-              <button onClick={handleNextImage}> &gt;next</button>
-            </div>
+              <button onClick={handlePrevImage}>
+  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
+    <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+  </svg>
+</button>
+{Array.from({ length: imagesPerGroup }).map((_, index) => (
+  <img
+    key={index}
+    className="person-image"
+    alt={`Sejong ${currentImageIndex + index}`}
+    src={images[(currentImageIndex + index) % images.length]}
+  />
+))}
+<button onClick={handleNextImage}>
+  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
+    <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+  </svg>
+</button></div>
           </div>
           <Link to="/contents" className="link-black">
                 <button className="btn btn-primary" style={{ marginLeft: '500px'}}>추천콘텐츠로 이동</button>
