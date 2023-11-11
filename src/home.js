@@ -9,14 +9,34 @@ function Home() {
   const images = ['content/bangone.png', 'content/chunmoon.png', 'content/sado.png', 'content/isan.png', 'content/narat.png', 'content/sejongbook2.png'];
   const imagesPerGroup = 3;
   const maxIndex = images.length - 1;
+  const intervalRef = useRef(null);
+  
 
   const handlePrevImage = () => {
     setCurrentImageIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) => Math.min(prevIndex + 1, maxIndex));
+    setCurrentImageIndex((prevIndex) => Math.min(prevIndex + 1) % (maxIndex + 1));
   };
+
+  const startAutoSlide = () => {
+    intervalRef.current = setInterval(() => {
+      handleNextImage();
+    }, 3000); // 3초간격
+  };
+
+  const stopAutoSlide = () => {
+    clearInterval(intervalRef.current);
+  };
+
+  useEffect(() => {
+    startAutoSlide();
+
+    return () => {
+      stopAutoSlide();
+    };
+  }, [currentImageIndex]);
 
 
   return (
@@ -84,26 +104,21 @@ function Home() {
               <th></th>
               <h7> 세종대왕, 영조, 태종의 역사와 문화를 탐험해보세요!</h7>
               <h7> 왕에 관한 흥미로운 이야기와 관련된 콘텐츠를 발견하고 역사의 흐름을 새롭게 경험해보세요</h7>
-              {/* <h5> 역사의 흐름을 새롭게 경험해보세요</h5> */}
               <div class="image-container">
               <div>
-      <button onClick={handlePrevImage}>&lt; Prev</button>
-      {images
-        .slice(currentImageIndex, currentImageIndex + imagesPerGroup)
-        .map((image, index) => (
-          <img key={index} className="person-image" alt={`Sejong ${currentImageIndex + index}`} src={image} />
-        ))}
-      <button onClick={handleNextImage}>Next &gt;</button>
-    </div>
-</div>
-
-              <Link to="/contents" className="link-black">
+              <button onClick={handlePrevImage}>&lt;prev</button>
+              {images
+                .slice(currentImageIndex, currentImageIndex + imagesPerGroup)
+                .map((image, index) => (
+                  <img key={index} className="person-image" alt={`Sejong ${currentImageIndex + index}`} src={image} />
+                ))}
+              <button onClick={handleNextImage}> &gt;next</button>
+            </div>
+          </div>
+          <Link to="/contents" className="link-black">
                 <button className="btn btn-primary" style={{ marginLeft: '500px'}}>추천콘텐츠로 이동</button>
               </Link>
-               </div>
-           
-            
-            
+            </div>     
           </div> 
         </div>
       </div>

@@ -127,6 +127,7 @@
 
 .recommended-content h2{
   font-weight: bold;
+
 }
 
 /* 이미지, 상세설명 부분 */
@@ -150,7 +151,7 @@
   flex-direction: column; /* 수정: 세로로 요소들을 배치 */
   align-items: flex-start; /* 추가: 왼쪽 정렬 */
   margin-top: 50px;
-  margin-left : 150px;
+  margin-left : 80px;
 }
 
 .move-to-contents h5{
@@ -199,11 +200,12 @@
 
 .image-container {
   display: flex;
+  margin-top:40px;
 }
 
 .person-image {
-  margin-right: 25px; /* 이미지 간격을 조절할 수 있습니다. */
-  width: 150px; /* 이미지 너비 조절 */
-  height: 180px; /* 이미지 높이는 자동으로 조절되도록 설정 */
+  margin-right: 25px; 
+  width: 250px; 
+  height: 300px; 
   margin-left: 10px;
 }
