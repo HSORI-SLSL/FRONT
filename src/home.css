@@ -6,7 +6,7 @@
   align-items: center;
   padding: 20px;
   width: 100%;
-  margin-left: 200px;
+  margin-left: 250px;
 }
 
 /* 인물정보 */
@@ -147,7 +147,7 @@
   flex-direction: column; /* 수정: 세로로 요소들을 배치 */
   align-items: flex-start; /* 추가: 왼쪽 정렬 */
   margin-top: 50px;
-  margin-left : 20px;
+  margin-left : 150px;
 }
 
 .move-to-contents h5{
@@ -164,7 +164,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top:80px;
+  margin-top:50px;
 }
 
 .move-to-contents .btn-primary:hover {
@@ -192,4 +192,15 @@
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
+}
+
+.image-container {
+  display: flex;
+}
+
+.person-image {
+  margin-right: 25px; /* 이미지 간격을 조절할 수 있습니다. */
+  width: 150px; /* 이미지 너비 조절 */
+  height: 180px; /* 이미지 높이는 자동으로 조절되도록 설정 */
+  margin-left: 10px;
 }

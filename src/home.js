@@ -4,6 +4,21 @@ import axios from 'axios';
 import './home.css';
 
 function Home() {
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = ['content/bangone.png', 'content/chunmoon.png', 'content/sado.png', 'content/isan.png', 'content/narat.png', 'content/sejongbook2.png'];
+  const imagesPerGroup = 3;
+  const maxIndex = images.length - 1;
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prevIndex) => Math.min(prevIndex + 1, maxIndex));
+  };
+
+
   return (
     <div className="Home custom-font">
     <div className = "home">
@@ -67,17 +82,28 @@ function Home() {
               <h2>더 많은 정보나 관련 콘텐츠를 찾고 계신가요?</h2>
               <th></th>
               <th></th>
-              <h5> 세종대왕, 영조, 태종의 역사와 문화를 탐험해보세요!</h5>
-              <h5> 왕에 관한 흥미로운 이야기와 관련된 콘텐츠를 발견하고 역사의 흐름을 새롭게 경험해보세요</h5>
+              <h7> 세종대왕, 영조, 태종의 역사와 문화를 탐험해보세요!</h7>
+              <h7> 왕에 관한 흥미로운 이야기와 관련된 콘텐츠를 발견하고 역사의 흐름을 새롭게 경험해보세요</h7>
               {/* <h5> 역사의 흐름을 새롭게 경험해보세요</h5> */}
+              <div class="image-container">
+              <div>
+      <button onClick={handlePrevImage}>&lt; Prev</button>
+      {images
+        .slice(currentImageIndex, currentImageIndex + imagesPerGroup)
+        .map((image, index) => (
+          <img key={index} className="person-image" alt={`Sejong ${currentImageIndex + index}`} src={image} />
+        ))}
+      <button onClick={handleNextImage}>Next &gt;</button>
+    </div>
+</div>
+
               <Link to="/contents" className="link-black">
-                <button className="btn btn-primary">추천콘텐츠로 이동</button>
+                <button className="btn btn-primary" style={{ marginLeft: '500px'}}>추천콘텐츠로 이동</button>
               </Link>
-              <p>세종대왕과 관련된 영화, 드라마, 도서, 유튜브를 통해 더 많은 지식을 얻어 가세요!</p>
-            </div>
-            <div className="image">
-            <img src="/img/ezgif.com-gif-maker.gif" alt="Bot Avatar" className="avatar" width="300px" height="400px" />
-            </div>
+               </div>
+           
+            
+            
           </div> 
         </div>
       </div>
