@@ -28,15 +28,16 @@
 ## 🚀 설치 및 실행 방법
 1. 이 리포지토리를 클론합니다.
 
-https://github.com/HSORI-SLSL/FRONT.git
+   https://github.com/HSORI-SLSL/FRONT.git
 
 
 2. 필요한 패키지를 설치합니다.
 
-pip install
+   pip install
 
 3. 로컬 서버를 실행합니다.
-npm start
+
+   npm start
 
 4. 백엔드 서버와 연동하여 챗봇 기능을 사용할 수 있습니다. 
 
