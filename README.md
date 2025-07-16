@@ -1,7 +1,6 @@
 # FRONTEND
 
-# 조선왕조실록 기반 
-# 역사학습 인공지능 챗봇 (Frontend)
+# 조선왕조실록 기반 역사학습 인공지능 챗봇 (Frontend)
 
 ![image](https://github.com/HSORI-SLSL/BackEnd/assets/106041730/846d3072-354d-4936-b05e-98a643eca0a1)
 
